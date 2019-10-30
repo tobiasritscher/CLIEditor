@@ -1,3 +1,5 @@
-class Editor{
+
+
+public class Editor {
 	
 }
