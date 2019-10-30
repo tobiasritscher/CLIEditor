@@ -7,9 +7,6 @@
 # BlueJ files
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 #Doc Ordner
 **/doc
 *.pkh
