@@ -89,12 +89,5 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-### Eclipse Patch ###
-# Eclipse Core
-.project
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-
 # Annotation Processing
 .apt_generated
