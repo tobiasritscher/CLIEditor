@@ -1,17 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Editor {
+    private static List<String> text;
 
 	public Editor() {
+        text = new ArrayList<>();
 	}
 
 	public static void main(String[] args){
-		//MARK: only for testing
-		String randomString = "Das Projekt isch voll geil\nIch freu mich scho uf Siedler\nWer das liest ist doof!";
-		Text textInput = new Text(randomString);
 		Output output = new Output();
-		output.printNumberedParagrap(textInput.getArrayList());
+        Input input = new Input();
 
-		//TODO: Real Code & Class Text erstellen
+        text = input.readInput();
+        output.printNumberedParagrap(text);
 	}
 
 	private void insertParagraph() {
