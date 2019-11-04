@@ -18,4 +18,12 @@ public class Input {
 
 	    return splitText;
     }
+
+    public String stringIn(){
+		return scanner.nextLine();
+	}
+
+	public int intIn() {
+	    return scanner.nextInt();
+    }
 }
