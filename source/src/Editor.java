@@ -14,7 +14,8 @@ public class Editor {
 		//MARK: only for testing
 		String randomString = "Das Projekt isch voll geil\nIch freu mich scho uf Siedler\nWer das liest ist doof!";
 		Input textInput = new Input(randomString);
-		textInput.printNumberedParagrap();
+		Output output = new Output();
+		output.printNumberedParagrap(textInput.getArrayList());
 
 		//TODO: Real Code
 	}
