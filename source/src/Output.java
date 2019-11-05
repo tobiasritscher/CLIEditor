@@ -12,4 +12,8 @@ public class Output {
             System.out.println((i + 1) + ": " + array.get(i));
         }
     }
+
+    public void print(String string){
+        System.out.println(string);
+    }
 }

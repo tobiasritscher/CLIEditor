@@ -12,7 +12,7 @@ public class Input {
         ArrayList<String> splitText = new ArrayList<String>();
 	    do {
             splitText.add(scanner.nextLine());
-	    } while (!splitText.get(splitText.size()-1).equals("END") && scanner.hasNextLine());
+	    } while (!splitText.get(splitText.size()-1).equalsIgnoreCase("END") && scanner.hasNextLine());
 
 	    splitText.remove(splitText.size()-1);
 

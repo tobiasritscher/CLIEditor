@@ -14,18 +14,20 @@ public class Editor {
 
 	public static void main(String[] args){
 	    Editor editor = new Editor();
+	    output.print("Please insert your text. At the end of your text write ''END'':");
         text = input.readInput();
 
         editor.chooseOption();
 	}
 
 	private void chooseOption() {
-	    String[] options = {"1: print paragraph", "2: insert paragraph", "3: delete paragraph", "4: replace", "5: index Words",
-                "6: print formated text"};
-        System.out.println("What do you want to do with your text?");
+	    String[] options = {"1: Print paragraph", "2: Insert paragraph", "3: Delete paragraph", "4: Replace", "5: Index Words",
+                "6: Print formated text"};
+        output.print("What do you want to do with your text?");
 
+        //print all the options
         for (int i = 0; options.length - 1 >= i; i++){
-            System.out.println(options[i]);
+            output.print(options[i]);
         }
 
 	    switch (input.intIn()) {
@@ -35,7 +37,7 @@ public class Editor {
             case 4: replace(); break;
             case 5: indexWords(); break;
             case 6: formatedText(); break;
-            default: System.out.println("wrong input, try again!"); break;
+            default: output.print("Wrong input, try again!"); break;
 	    }
     }
 
