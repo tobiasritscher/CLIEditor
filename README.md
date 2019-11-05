@@ -13,12 +13,19 @@ Das Projekt wurde ine Eclipse und IntelliJ getestet und funktioniert über den T
 Wenn Sie das Programm starten können Sie ihren Text kopieren und vollständig in den Terminal kopieren.
 Um dem Programm das Ende des Textes zu signalisieren geben Sie "END" ein.
 
+
 Bearbeitungsmöglichkeiten für ihren Text:
+
 1: Print paragraphs - Gibt alle Paragraphen nummeriert im Terminal aus.
+
 2: Insert paragraph - Sie können einen Paragraphen an der von Ihnen gewünschten Stelle einfügen.
+
 3: Delete paragraph - Sie können einen Paragraphen an der von Ihnen gewünschten Stelle löschen.
+
 4: Replace - Ein Wort suchen und ersetzten.
+
 5: Index Words - Gibt eine Liste mit allen Worten, welche mindestens zwei mal vorkommen, zurück. Inklusive Paragraphen Nummer.
+
 6: Print formated text - Gibt den Text im Terminal zurück. Sie können die Zeilenlänge bestimmen.
 
 ## Team
