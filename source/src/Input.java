@@ -9,7 +9,7 @@ public class Input {
     }
 
 	public List<String> readInput(){
-        ArrayList<String> splitText = new ArrayList<String>();
+        ArrayList<String> splitText = new ArrayList<>();
 	    do {
             splitText.add(scanner.nextLine());
 	    } while (!splitText.get(splitText.size()-1).equalsIgnoreCase("END") && scanner.hasNextLine());
@@ -18,10 +18,6 @@ public class Input {
 
 	    return splitText;
     }
-
-    public String stringIn(){
-		return scanner.nextLine();
-	}
 
 	public int intIn() {
 	    return scanner.nextInt();
