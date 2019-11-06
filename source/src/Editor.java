@@ -31,7 +31,7 @@ public class Editor {
     }
 
 	private void chooseOption() {
-	    String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
+	    String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a text", "5: Index Words",
                 "6: Print formated text"};
         output.print("What do you want to do with your text? (Just write the number):");
 
