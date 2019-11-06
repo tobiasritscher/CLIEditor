@@ -61,8 +61,15 @@ public class Editor {
     }
 
 	private void insertParagraph() {
+		boolean dumbass = true;
+		int position;
 		output.print("Please type the position at which you would like your paragraph to be placed at:");
-		int position = input.intIn() - 1;
+		do {
+			position = input.intIn() - 1;
+			if (position < 1 || position > text.size() - 1) {
+				output.print("This isnt a valid number");
+			} else dumbass = false;
+		} while (dumbass);
 		output.print("Now type the desired paragraph:");
 		text.add(position, input.stringIn());
         for (String s : text) {
