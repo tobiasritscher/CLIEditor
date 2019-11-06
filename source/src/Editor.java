@@ -20,7 +20,7 @@ public class Editor {
 
 	public static void main(String[] args){
 	    Editor editor = new Editor();
-	    boolean nextOption = false;
+	    boolean nextOption = true;
         editor.chooseText();
 	    do {
 	    	editor.chooseOption();
@@ -75,40 +75,46 @@ public class Editor {
 		output.print("Now type the desired paragraph:");
 		text.add(position, input.stringIn());
 
-        for (String s : text) {
-            System.out.println(s);
-        }
-}
+		output.printNumberedParagrap(text);
+    }
 
     private void deleteParagraph() {
-    	boolean run = true;
+    	boolean controllLoop = true;
+		int position;
     	output.print("Which paragraph would you like to delete?");
-    	int position;
+
     	do {
     		position = input.intIn() - 1;
-    		if(position < 0 || position > text.size() - 1) {
+    		if (position < 0 || position > text.size() - 1)
     			output.print("Please give a valid number!");
-    	} else run = false;
-    	} while (run);
+    		else controllLoop = false;
+    	} while (controllLoop);
+
     	text.remove(position);
-        for (String s : text) {
-            System.out.println(s);
-        }
+
+        output.printNumberedParagrap(text);
     	
     }
 
     private void replace() {
-        //TODO: keyword suchen und ersetzen
+		int paragraph;
+		String partOfText;
+		String oldWord;
+		String newWord;
+
     	output.print("In which paragraph would you like to replace your word?");
-    	int paragraph = input.intIn() - 1;
-    	String partOfText = text.get(paragraph);
+    	paragraph = input.intIn() - 1;
+    	partOfText = text.get(paragraph);
+
     	output.print("What word would you like to replace:");
-    	String replacedWord = input.stringIn();
+    	oldWord = input.stringIn();
+
     	output.print("What word would you like to use instead?");
-    	String newWord = input.stringIn();
-    	partOfText.replaceFirst(replacedWord, newWord);
+    	newWord = input.stringIn();
+		partOfText = partOfText.replace(oldWord, newWord);
+
     	text.set(paragraph, partOfText);
-    	System.out.println(text);
+    	output.printNumberedParagrap(text);
     }
 
     private void indexWords() {
