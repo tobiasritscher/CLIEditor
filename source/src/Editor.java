@@ -62,12 +62,23 @@ public class Editor {
 		int position = input.intIn() - 1;
 		output.print("Now type the desired paragraph:");
 		text.add(position, input.stringIn());
+		for(int i = 0; i < text.size(); i++) {
+    		System.out.println(text.get(i));
+    		}
     }
 
     private void deleteParagraph() {
     	output.print("Which paragraph would you like to delete?");
     	int position = input.intIn() - 1;
+    	if(position <= 0 || position > text.size()) {
+    		output.print("Please give a valid number!");
+    		position = input.intIn() -1;
+    	}
     	text.remove(position);
+    	for(int i = 0; i < text.size(); i++) {
+    		System.out.println(text.get(i));
+    	}
+    	
     }
 
     private void replace() {
@@ -79,7 +90,9 @@ public class Editor {
     	String replacedWord = input.stringIn();
     	output.print("What word would you like to use instead?");
     	String newWord = input.stringIn();
-    	replaceWord(paragraph, partOfText, replacedWord, newWord);
+    	partOfText.replaceFirst(replacedWord, newWord);
+    	text.set(paragraph, partOfText);
+    	System.out.println(text);
     }
 
     private void indexWords() {
@@ -100,8 +113,4 @@ public class Editor {
 
     }
     
-    private void replaceWord(Integer paragraph, String partOfText, String replacedWord, String newWord) {
-    	String magic = partOfText.replaceFirst(replacedWord, newWord);
-    	text.set(paragraph, magic);
-    }
 }
