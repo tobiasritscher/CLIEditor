@@ -79,6 +79,7 @@ public class Editor {
 	    TODO: hashmap erstellen mit allen Wörtern, welche öfters als zwei mal vorkommen
         HashMap<Paragraph, word>
         */
+    	
   
 
     }
