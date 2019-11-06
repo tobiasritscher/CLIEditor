@@ -22,9 +22,9 @@ public class Editor {
 	    boolean nextOption = true;
         editor.chooseText();
 	    do {
-            editor.chooseOption();
-            output.print("Do you want do continue editing? [Y/N]");
-            if (input.stringIn().equalsIgnoreCase("N")) break;
+	    	output.print("Type 'N' to exit application");
+	    	editor.chooseOption();
+            if (input.stringIn().equalsIgnoreCase("N")) nextOption = false;
         } while (nextOption);
 	}
 
@@ -61,7 +61,9 @@ public class Editor {
 		output.print("Please type the position at which you would like your paragraph to be placed at:");
 		int position = input.intIn() - 1;
 		output.print("Now type the desired paragraph:");
-		text.add(position, input.stringIn());
+		String addedText = input.stringIn();
+		System.out.println(addedText);
+		text.add(position, addedText);
 		for(int i = 0; i < text.size(); i++) {
     		System.out.println(text.get(i));
     		}
@@ -70,7 +72,7 @@ public class Editor {
     private void deleteParagraph() {
     	output.print("Which paragraph would you like to delete?");
     	int position = input.intIn() - 1;
-    	if(position <= 0 || position > text.size()) {
+    	if(position < 0 || position > text.size()) {
     		output.print("Please give a valid number!");
     		position = input.intIn() -1;
     	}
