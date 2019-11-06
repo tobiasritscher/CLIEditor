@@ -26,7 +26,7 @@ public class Editor {
 	private void chooseText() {
 	    output.print("Do you want to use your own text? [Y/N]:");
 	    if (input.stringIn().equalsIgnoreCase("Y")) {
-            output.print("Please insert your text. At the end of your text write ''END'':");
+            output.print("Please insert your text. At the end of your text switch to a new line and write 'END':");
             text = input.readInput();
         } else {
 	        text = loremIpsum.getTextArray();
