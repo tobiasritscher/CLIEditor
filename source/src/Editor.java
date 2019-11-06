@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,9 +79,14 @@ public class Editor {
         /*
 	    TODO: hashmap erstellen mit allen Wörtern, welche öfters als zwei mal vorkommen
         HashMap<Paragraph, word>
+        - Zwei For-Loops machen und durch iterieren. Ich benötige einen zweidimensionalen Array
+        Wir müssen auch noch wissen, in welchen Paragraphen das Wort vorkommt. Es macht Sinn 
+        hierfür eine eigene Methode (oder Klasse?) zu erstellen
         */
-    	
-  
+    	for(int i = 0; i<text.size(); i++) {
+			List<String> words = Arrays.asList(text.get(i).split(" "));
+		}
+		
 
     }
 
