@@ -79,8 +79,7 @@ public class Editor {
     	String replacedWord = input.stringIn();
     	output.print("What word would you like to use instead?");
     	String newWord = input.stringIn();
-    	partOfText.replaceFirst(replacedWord, newWord);
-    	text.set(paragraph, partOfText);
+    	replaceWord(paragraph, partOfText, replacedWord, newWord);
     }
 
     private void indexWords() {
@@ -99,5 +98,10 @@ public class Editor {
         (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
         */
 
+    }
+    
+    private void replaceWord(Integer paragraph, String partOfText, String replacedWord, String newWord) {
+    	String magic = partOfText.replaceFirst(replacedWord, newWord);
+    	text.set(paragraph, magic);
     }
 }
