@@ -3,12 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 
 	public Input() {
     }
 
 	public List<String> readInput(){
+		scanner = new Scanner(System.in);
         ArrayList<String> splitText = new ArrayList<>();
 	    do {
             splitText.add(scanner.nextLine());
@@ -20,11 +21,12 @@ public class Input {
     }
 
 	public int intIn() {
+		scanner = new Scanner(System.in);
 	    return scanner.nextInt();
     }
 
 	public String stringIn() {
-		String answer = scanner.nextLine();
-		return answer;
+		scanner = new Scanner(System.in);
+		return scanner.nextLine();
 	}
 }
