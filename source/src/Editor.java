@@ -81,7 +81,7 @@ public class Editor {
         HashMap<Paragraph, word>
         - Zwei For-Loops machen und durch iterieren. Ich benötige einen zweidimensionalen Array
         Wir müssen auch noch wissen, in welchen Paragraphen das Wort vorkommt. Es macht Sinn 
-        hierfür eine eigene Methode (oder Klasse?) zu erstellen
+        hierfür eine eigene Methode (oder Klasse?) zu erstellen. 
         */
     	for(int i = 0; i<text.size(); i++) {
 			List<String> words = Arrays.asList(text.get(i).split(" "));
