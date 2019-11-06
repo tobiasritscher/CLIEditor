@@ -66,7 +66,7 @@ public class Editor {
 		output.print("Please type the position at which you would like your paragraph to be placed at:");
 		do {
 			position = input.intIn() - 1;
-			if (position < 1 || position > text.size() - 1) {
+			if (position < 0 || position > text.size() - 1) {
 				output.print("This isnt a valid number");
 			} else dumbass = false;
 		} while (dumbass);
