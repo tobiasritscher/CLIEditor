@@ -24,6 +24,7 @@ public class Input {
     }
 
 	public String stringIn() {
-		return scanner.nextLine();
+		String answer = scanner.nextLine();
+		return answer;
 	}
 }
