@@ -55,7 +55,6 @@ public class Editor {
     }
 
 	private void insertParagraph() {
-	    //TODO: paragraph einsetzen
 		output.print("Please type the position at which you would like your paragraph to be placed at:");
 		int position = input.intIn() - 1;
 		output.print("Now type the desired paragraph:");
@@ -63,7 +62,6 @@ public class Editor {
     }
 
     private void deleteParagraph() {
-	    //TODO: paragraph löschen
     	output.print("Which paragraph would you like to delete?");
     	int position = input.intIn() - 1;
     	text.remove(position);
