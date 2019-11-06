@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-	Scanner scanner;
+	private Scanner scanner;
 
 	public Input() {
     }
