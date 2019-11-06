@@ -19,8 +19,13 @@ public class Editor {
 
 	public static void main(String[] args){
 	    Editor editor = new Editor();
-	    editor.chooseText();
-        editor.chooseOption();
+	    boolean nextOption = true;
+        editor.chooseText();
+	    do {
+            editor.chooseOption();
+            output.print("Do you want do continue editing? [Y/N]");
+            if (input.stringIn().equalsIgnoreCase("N")) break;
+        } while (nextOption);
 	}
 
 	private void chooseText() {
@@ -28,9 +33,7 @@ public class Editor {
 	    if (input.stringIn().equalsIgnoreCase("Y")) {
             output.print("Please insert your text. At the end of your text write ''END'':");
             text = input.readInput();
-        } else {
-	        text = loremIpsum.getTextArray();
-        }
+        } else text = loremIpsum.getTextArray();
     }
 
 	private void chooseOption() {
