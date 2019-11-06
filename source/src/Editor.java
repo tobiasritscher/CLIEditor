@@ -62,9 +62,9 @@ public class Editor {
 		int position = input.intIn() - 1;
 		output.print("Now type the desired paragraph:");
 		text.add(position, input.stringIn());
-		for(int i = 0; i < text.size(); i++) {
-    		System.out.println(text.get(i));
-    		}
+        for (String s : text) {
+            System.out.println(s);
+        }
     }
 
     private void deleteParagraph() {
@@ -75,9 +75,9 @@ public class Editor {
     		position = input.intIn() -1;
     	}
     	text.remove(position);
-    	for(int i = 0; i < text.size(); i++) {
-    		System.out.println(text.get(i));
-    	}
+        for (String s : text) {
+            System.out.println(s);
+        }
     	
     }
 
