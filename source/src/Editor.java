@@ -20,12 +20,14 @@ public class Editor {
 
 	public static void main(String[] args){
 	    Editor editor = new Editor();
-	    boolean nextOption = true;
+	    boolean nextOption = false;
         editor.chooseText();
 	    do {
 	    	editor.chooseOption();
+	    	//TODO: Only for debbugging, need better solution
             output.print("Type 'N' to exit application");
             if (input.stringIn().equalsIgnoreCase("N")) nextOption = false;
+
         } while (nextOption);
 	}
 
