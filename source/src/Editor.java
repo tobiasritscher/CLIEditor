@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Editor {
     private static List<String> text;
     private static Input input;
     private static Output output;
     private static LoremIpsum loremIpsum;
+    private Map<String, Integer> countWords = new HashMap<>();
 
 	public Editor() {
         text = new ArrayList<>();
@@ -76,6 +79,7 @@ public class Editor {
 	    TODO: hashmap erstellen mit allen Wörtern, welche öfters als zwei mal vorkommen
         HashMap<Paragraph, word>
         */
+  
 
     }
 
