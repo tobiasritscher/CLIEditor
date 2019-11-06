@@ -23,8 +23,8 @@ public class Editor {
 	    boolean nextOption = true;
         editor.chooseText();
 	    do {
-	    	output.print("Type 'N' to exit application");
 	    	editor.chooseOption();
+            output.print("Type 'N' to exit application");
             if (input.stringIn().equalsIgnoreCase("N")) nextOption = false;
         } while (nextOption);
 	}
