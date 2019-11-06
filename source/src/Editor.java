@@ -78,12 +78,15 @@ public class Editor {
 }
 
     private void deleteParagraph() {
+    	boolean run = true;
     	output.print("Which paragraph would you like to delete?");
-    	int position = input.intIn() - 1;
-    	if(position < 0 || position > text.size()) {
-    		output.print("Please give a valid number!");
-    		position = input.intIn() -1;
-    	}
+    	int position;
+    	do {
+    		position = input.intIn() - 1;
+    		if(position < 0 || position > text.size() - 1) {
+    			output.print("Please give a valid number!");
+    	} else run = false;
+    	} while (run);
     	text.remove(position);
         for (String s : text) {
             System.out.println(s);
