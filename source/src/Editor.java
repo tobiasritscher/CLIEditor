@@ -69,7 +69,15 @@ public class Editor {
 
     private void replace() {
         //TODO: keyword suchen und ersetzen
-
+    	output.print("In which paragraph would you like to replace your word?");
+    	int paragraph = input.intIn() - 1;
+    	String partOfText = text.get(paragraph);
+    	output.print("What word would you like to replace:");
+    	String replacedWord = input.stringIn();
+    	output.print("What word would you like to use instead?");
+    	String newWord = input.stringIn();
+    	partOfText.replaceFirst(replacedWord, newWord);
+    	text.set(paragraph, partOfText);
     }
 
     private void indexWords() {
