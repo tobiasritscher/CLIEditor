@@ -20,15 +20,8 @@ public class Editor {
 
 	public static void main(String[] args){
 	    Editor editor = new Editor();
-	    boolean nextOption = true;
-        editor.chooseText();
-	    do {
-	    	editor.chooseOption();
-	    	//TODO: Only for debbugging, need better solution
-            output.print("Type 'N' to exit application");
-            if (input.stringIn().equalsIgnoreCase("N")) nextOption = false;
-
-        } while (nextOption);
+	    editor.chooseText();
+        editor.chooseOption();
 	}
 
 	private void chooseText() {
@@ -36,11 +29,13 @@ public class Editor {
 	    if (input.stringIn().equalsIgnoreCase("Y")) {
             output.print("Please insert your text. At the end of your text switch to a new line and write 'END':");
             text = input.readInput();
-        } else text = loremIpsum.getTextArray();
+        } else {
+	        text = loremIpsum.getTextArray();
+        }
     }
 
 	private void chooseOption() {
-	    String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a text", "5: Index Words",
+	    String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
                 "6: Print formated text"};
         output.print("What do you want to do with your text? (Just write the number):");
 
@@ -61,60 +56,23 @@ public class Editor {
     }
 
 	private void insertParagraph() {
-		boolean controllLoop = true;
-		int position;
-
+	    //TODO: paragraph einsetzen
 		output.print("Please type the position at which you would like your paragraph to be placed at:");
-		do {
-			position = input.intIn() - 1;
-			if (position < 0 || position > text.size() - 1) {
-				output.print("This isn't a valid number. Try again:");
-			} else controllLoop = false;
-		} while (controllLoop);
-
+		int position = input.intIn() - 1;
 		output.print("Now type the desired paragraph:");
 		text.add(position, input.stringIn());
-
-		output.printNumberedParagrap(text);
     }
 
     private void deleteParagraph() {
-    	boolean controllLoop = true;
-		int position;
+	    //TODO: paragraph löschen
     	output.print("Which paragraph would you like to delete?");
-
-    	do {
-    		position = input.intIn() - 1;
-    		if (position < 0 || position > text.size() - 1)
-    			output.print("Please give a valid number!");
-    		else controllLoop = false;
-    	} while (controllLoop);
-
+    	int position = input.intIn() - 1;
     	text.remove(position);
-
-        output.printNumberedParagrap(text);
-    	
     }
 
     private void replace() {
-		int paragraph;
-		String partOfText;
-		String oldWord;
-		String newWord;
+        //TODO: keyword suchen und ersetzen
 
-    	output.print("In which paragraph would you like to replace your word?");
-    	paragraph = input.intIn() - 1;
-    	partOfText = text.get(paragraph);
-
-    	output.print("What word would you like to replace:");
-    	oldWord = input.stringIn();
-
-    	output.print("What word would you like to use instead?");
-    	newWord = input.stringIn();
-		partOfText = partOfText.replace(oldWord, newWord);
-
-    	text.set(paragraph, partOfText);
-    	output.printNumberedParagrap(text);
     }
 
     private void indexWords() {
@@ -125,8 +83,18 @@ public class Editor {
         Wir müssen auch noch wissen, in welchen Paragraphen das Wort vorkommt. Es macht Sinn 
         hierfür eine eigene Methode (oder Klasse?) zu erstellen. 
         */
+    	System.out.println("Anzahl Paragraphen: " + text.size());
+    	
+    	List<ArrayList<Integer>> twoDArrayList = new ArrayList<ArrayList<Integer>>();
+    	
+    	
     	for(int i = 0; i<text.size(); i++) {
 			List<String> words = Arrays.asList(text.get(i).split(" "));
+    		
+    		for(int p = 0; p<words.size(); p++) {
+    			String word = words.get(p).replaceAll("[,.]","");
+    			System.out.println("Paragraph " + i + ", Wort " + p + " :" + word);
+    		}
 		}
 		
 
@@ -140,5 +108,5 @@ public class Editor {
         */
 
     }
-    
 }
+ 
