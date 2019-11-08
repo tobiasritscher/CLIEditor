@@ -85,7 +85,8 @@ public class Editor {
         Wir müssen auch noch wissen, in welchen Paragraphen das Wort vorkommt. Es macht Sinn 
         hierfür eine eigene Methode (oder Klasse?) zu erstellen. 
         */
-    	System.out.println("Anzahl Paragraphen: " + text.size());
+    	System.out.println("Total number of paragraphs: " + text.size());
+    	System.out.println("*******************************");
     	
     	
     	
@@ -134,8 +135,15 @@ public class Editor {
         	
         	//Nur ausgeben, wenn das Wort häufiger als 1mal vorkommt
         	if(values.get(0) > 1) {
-        	System.out.println("Key: " + key + " kommt vor in: " + values);
+        		System.out.print("'" + key + "'");
+        		System.out.print(" exists " + values.get(0) + " times in paragraphs [");
+        		for(int i=1; i<values.size()-1;i++) {
+        			System.out.print(values.get(i) + ", ");
+        		}
+        		//Print last occurrence of word
+        		System.out.println(values.get(values.size()-1) + "]");
         	}
+        	
         	
         	
         }
