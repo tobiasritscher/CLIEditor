@@ -3,13 +3,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Editor {
     private static List<String> text;
     private static Input input;
     private static Output output;
     private static LoremIpsum loremIpsum;
-    private Map<String, Integer> countWords = new HashMap<>();
+    private static Map<String, List<Integer>> wordIndex = new TreeMap<String, List<Integer>>();
+	
 
 	public Editor() {
         text = new ArrayList<>();
@@ -85,20 +87,59 @@ public class Editor {
         */
     	System.out.println("Anzahl Paragraphen: " + text.size());
     	
-    	List<ArrayList<Integer>> twoDArrayList = new ArrayList<ArrayList<Integer>>();
+    	
     	
     	
     	for(int i = 0; i<text.size(); i++) {
 			List<String> words = Arrays.asList(text.get(i).split(" "));
+			List<Integer> paragraphen = new ArrayList<>();
     		
     		for(int p = 0; p<words.size(); p++) {
     			String word = words.get(p).replaceAll("[,.]","");
-    			System.out.println("Paragraph " + i + ", Wort " + p + " :" + word);
+    			word = word.toLowerCase();
+    			
+    			if(wordIndex.get(word) == null) {
+    				wordIndex.put(word, new ArrayList<Integer>());
+    				
+    				/*Das erste Element des Arrays zählt die Häufigkeit des Wortes.
+    				Hier wird es initialisiert.*/
+    				wordIndex.get(word).add(1);
+    				
+    				/*Das zweite Element des Arrays gibt an, in welchem Paragraph das Wort
+    				zum ersten Mal auftritt*/
+    				wordIndex.get(word).add(i+1);
+
+    			}else {
+    				//wordIndex.put(word,wordFrequency + 1);
+    				wordIndex.get(word).set(0, wordIndex.get(word).get(0).intValue() + 1);
+    				
+    				//Fügt hinzu, in welchem Paragraphen das Wort noch auftritt
+    				wordIndex.get(word).add(i+1);
+    			}
     		}
 		}
-		
+		printIndex();
 
     }
+    
+    //Speichert in welchem Paragraph sich das gesuchte Wort befindet
+    public void indexInParagraph() {
+    	
+    }
+    
+    public void printIndex() {
+        for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()){
+        	String key = word.getKey();
+        	List<Integer> values = word.getValue();
+        	
+        	//Nur ausgeben, wenn das Wort häufiger als 1mal vorkommt
+        	if(values.get(0) > 1) {
+        	System.out.println("Key: " + key + " kommt vor in: " + values);
+        	}
+        	
+        	
+        }
+      }
 
     private void formatedText() {
 	    /*
