@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class handels the text constant to use for the programm
+ */
 public class LoremIpsum {
     private static final String TEXT_LOREM_ISPUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum in risus et feugiat. Maecenas tempus volutpat luctus. Quisque a feugiat nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam laoreet aliquam risus, feugiat feugiat erat vestibulum vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt nec leo sed placerat. Fusce quis finibus elit, sed mollis mauris.\n" +
             "Cras dictum elementum augue at mollis. Cras auctor venenatis bibendum. In volutpat a eros eu sodales. Nulla sapien nisl, ultrices ullamcorper consequat at, facilisis vitae quam. Aenean scelerisque aliquam faucibus. Nunc accumsan nibh nibh, ut blandit mi porta et. Mauris non feugiat ipsum. Proin commodo commodo metus non eleifend. Nunc cursus turpis at vestibulum maximus. Vivamus rhoncus risus sed magna convallis interdum.\n" +
@@ -13,9 +16,16 @@ public class LoremIpsum {
             "Curabitur at bibendum elit. Nulla porttitor volutpat tellus eget rhoncus. Maecenas consequat pretium ipsum, pellentesque varius nulla egestas in. Aliquam erat volutpat. Etiam ornare quam eu velit dictum, at sagittis nisi ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed vel felis rutrum, rutrum sem vitae, fringilla tortor. Ut quis facilisis ante, malesuada suscipit est. Phasellus massa sem, elementum sit amet augue in, tristique sollicitudin tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;\n" +
             "Nam tristique viverra nulla id ultricies. Cras tortor nulla, rutrum id vehicula ac, laoreet et metus. Mauris vitae diam vehicula, feugiat justo vitae, varius orci. Integer id nulla erat. Maecenas tellus turpis, lobortis vel neque nec, auctor porta sem. Curabitur varius tellus eu luctus porta. Nam malesuada tellus non pretium ullamcorper. Praesent felis augue, posuere tristique pulvinar vel, finibus vel tortor. Suspendisse varius orci a massa consectetur dignissim. Proin laoreet malesuada lectus ac accumsan. Sed vestibulum sodales felis, eu lobortis diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae\n";
 
+    /**
+     * Construdtor of the class
+     */
     public LoremIpsum() {
     }
 
+    /**
+     * get methode for the constant text
+     * @return ArrayList with the Lorem Ipsum text splitted by '\n'
+     */
     public List<String> getTextArray() {
         return Arrays.asList(TEXT_LOREM_ISPUM.split("\n"));
     }
