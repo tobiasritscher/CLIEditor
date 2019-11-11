@@ -30,13 +30,16 @@ public class Editor {
 	 */
 	public static void main(String[] args){
 	    Editor editor = new Editor();
-	    editor.chooseAndSetText();
-        editor.callEditingOption();
+	    OutputInput chooseText = new OutputInput("Do you want to use your own text? [Y/N]: ");
+		editor.printOptions();
+	    OutputInput chooseOption = new OutputInput("What do you want to do with your text? (Just write the number): ");
+
+	    editor.chooseAndSetText(chooseText.getInput());
+        editor.callEditingOption(chooseOption.getInput());
 	}
 
-	private void chooseAndSetText() {
-	    output.print("Do you want to use your own text? [Y/N]:");
-	    if (input.stringIn().equalsIgnoreCase("Y")) {
+	private void chooseAndSetText(String userInput) {
+	    if (userInput.equalsIgnoreCase("Y")) {
             output.print("Please insert your text. At the end of your text switch to a new line and write 'END':");
             paragraphs = input.readInput();
         } else {
@@ -44,24 +47,25 @@ public class Editor {
         }
     }
 
-	private void callEditingOption() {
-	    String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
-                "6: Print formated text"};
-        output.print("What do you want to do with your text? (Just write the number):");
+    private void printOptions() {
+		String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
+				"6: Print formated text"};
 
-        //print all the options
+		//print all the options
 		for (String s : options){
 			output.print(s);
 		}
+	}
 
+	private void callEditingOption(String userInput) {
 		//switch case to choose the option
-	    switch (input.intIn()) {
-            case 1: output.printNumberedParagrap(paragraphs); break;
-            case 2: insertParagraph(); break;
-            case 3: deleteParagraph(); break;
-            case 4: replace(); break;
-            case 5: indexWords(); break;
-            case 6: formatedText(); break;
+	    switch (userInput) {
+            case "1": output.printNumberedParagrap(paragraphs); break;
+            case "2": insertParagraph(); break;
+            case "3": deleteParagraph(); break;
+            case "4": replace(); break;
+            case "5": indexWords(); break;
+            case "6": formatedText(); break;
             default: output.print("Wrong input, try again!"); break;
 	    }
     }
