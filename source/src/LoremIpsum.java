@@ -29,6 +29,6 @@ public class LoremIpsum {
      * @return ArrayList with the Lorem Ipsum text splitted by '\n'
      */
     public List<String> getTextArray() {
-        return Arrays.asList(TEXT_LOREM_ISPUM.split("\n"));
+    	return new ArrayList<>(Arrays.asList(TEXT_LOREM_ISPUM.split("\n")));
     }
 }

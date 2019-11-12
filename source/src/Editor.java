@@ -133,13 +133,35 @@ public class Editor {
         }
 	}
 
-	/**
-	 * TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
-	 *         Zeilenumbruch jeweils auf dem letzten Lehrzeichen
-	 *         (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
-	 */
-    public void formatedText() {
+    /**
+     * TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
+     *         Zeilenumbruch jeweils auf dem letzten Lehrzeichen
+     *         (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
+     */
+       public void formatedText(String lengthInput) {
+     int paragraphLength = Integer.parseInt(lengthInput);
+     List<String> wordList = words(paragraphs);
 
+
+       }
+
+       private List<String> words(List<String> text){
+     String textString = listToString(text);
+
+     return Arrays.asList(textString.split(" "));
+    }
+
+    private String listToString(List<String> text) {
+     StringBuilder wordsBuilder = new StringBuilder();
+
+     for (String value : text) {
+      String[] fulltext = value.split(" ");
+      for (String s : fulltext) {
+       wordsBuilder.append(s);
+       wordsBuilder.append(" ");
+      }
+     }
+     return wordsBuilder.toString();
     }
 }
  
