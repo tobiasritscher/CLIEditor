@@ -53,7 +53,7 @@ public class Logic {
                 editor.deleteParagraph(chooseParagraphToDelete.getInput()); break;
             case "4": editor.replace(); break;
             case "5": editor.indexWords(); break;
-            case "6": editor.formatedText(); break;
+            case "6": editor.formatedText("2"); break;
             default: output.print("Wrong input, try again!"); break;
         }
         return stopProgramm;
