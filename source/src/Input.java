@@ -23,9 +23,9 @@ public class Input {
         ArrayList<String> splitText = new ArrayList<>();
 	    do {
             splitText.add(scanner.nextLine());
-	    } while (!splitText.get(splitText.size()-1).equalsIgnoreCase("END") && scanner.hasNextLine());
+	    } while (!splitText.get(splitText.size() -1 ).equalsIgnoreCase("END") && scanner.hasNextLine());
 
-	    splitText.remove(splitText.size()-1);
+	    splitText.remove(splitText.size() -1 );
 
 	    return splitText;
     }

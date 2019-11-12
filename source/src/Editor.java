@@ -11,7 +11,6 @@ public class Editor {
     private static Input input;
     private static Output output;
     private static LoremIpsum loremIpsum;
-    private static Map<String, List<Integer>> wordIndex = new TreeMap<>();
     private static int ARRAY_OFFSET = 1;
 
 	/**
@@ -25,20 +24,18 @@ public class Editor {
 	}
 
 	/**
-	 * main method of the programm, here it all begins
-	 * @param args arguments passed to the code when exicuting the programm
+	 * geter for the paragraph List
+	 * @return all paragraphs as an list
 	 */
-	public static void main(String[] args){
-	    Editor editor = new Editor();
-	    OutputInput chooseText = new OutputInput("Do you want to use your own text? [Y/N]: ");
-		editor.printOptions();
-	    OutputInput chooseOption = new OutputInput("What do you want to do with your text? (Just write the number): ");
-
-	    editor.chooseAndSetText(chooseText.getInput());
-        editor.callEditingOption(chooseOption.getInput());
+	public static List<String> getParagraphs() {
+		return paragraphs;
 	}
 
-	private void chooseAndSetText(String userInput) {
+	/**
+	 * let you set a text you want to edit
+	 * @param userInput String to decide wich text to use
+	 */
+	public void chooseAndSetText(String userInput) {
 	    if (userInput.equalsIgnoreCase("Y")) {
             output.print("Please insert your text. At the end of your text switch to a new line and write 'END':");
             paragraphs = input.readInput();
@@ -47,48 +44,38 @@ public class Editor {
         }
     }
 
-    private void printOptions() {
-		String[] options = {"1: Print paragraphs", "2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
-				"6: Print formated text"};
-
-		//print all the options
-		for (String s : options){
-			output.print(s);
-		}
-	}
-
-	private void callEditingOption(String userInput) {
-		//switch case to choose the option
-	    switch (userInput) {
-            case "1": output.printNumberedParagrap(paragraphs); break;
-            case "2": insertParagraph(); break;
-            case "3": deleteParagraph(); break;
-            case "4": replace(); break;
-            case "5": indexWords(); break;
-            case "6": formatedText(); break;
-            default: output.print("Wrong input, try again!"); break;
-	    }
+	/**
+	 * inserts a choosen paragraph at a choosen position
+	 * @param positionString position of the new paragrpah as String
+	 * @param newParagraph paragraph to set as String
+	 */
+	public void insertParagraph(String positionString, String newParagraph) {
+		int position = Integer.parseInt(positionString) - ARRAY_OFFSET;
+		paragraphs.add(position, newParagraph);
     }
 
-	private void insertParagraph() {
-		output.print("Please type the position at which you would like your paragraph to be placed at:");
-		int position = input.intIn() - ARRAY_OFFSET;
-		output.print("Now type the desired paragraph:");
-		paragraphs.add(position, input.stringIn());
-    }
-
-    private void deleteParagraph() {
-    	output.print("Which paragraph would you like to delete?");
-    	int position = input.intIn() - ARRAY_OFFSET;
+	/**
+	 * delets a pragraph at the choosen position
+	 * @param positionString position of the paragraph to delete as String
+	 */
+	public void deleteParagraph(String positionString) {
+    	int position = Integer.parseInt(positionString) - ARRAY_OFFSET;
     	paragraphs.remove(position);
     }
 
-    private void replace() {
+	/**
+	 * replaces a choosen String with a new one
+	 */
+	public void replace() {
         //TODO: keyword suchen und ersetzen
 
     }
 
-    private void indexWords() {
+	/**
+	 * prints an index of all words with the number of occurence and where to find them
+	 */
+	public void indexWords() {
+		Map<String, List<Integer>> wordIndex = new TreeMap<>();
     	System.out.println("Total number of paragraphs: " + paragraphs.size());
     	System.out.println("*******************************");
     	
@@ -121,14 +108,14 @@ public class Editor {
 				}
 			}
 		}
-		printIndex();
+		printIndex(wordIndex);
     }
 
     private void indexInParagraph() {
 		//TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
     }
     
-    private void printIndex() {
+    private void printIndex(Map<String, List<Integer>> wordIndex) {
         for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()){
         	String key = word.getKey();
         	List<Integer> values = word.getValue();
@@ -149,12 +136,12 @@ public class Editor {
         }
 	}
 
-    private void formatedText() {
-	    /*
-	    TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
-        Zeilenumbruch jeweils auf dem letzten Lehrzeichen
-        (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
-        */
+	/**
+	 * TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
+	 *         Zeilenumbruch jeweils auf dem letzten Lehrzeichen
+	 *         (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
+	 */
+    public void formatedText() {
 
     }
 }
