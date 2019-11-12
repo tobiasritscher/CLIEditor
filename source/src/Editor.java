@@ -143,9 +143,6 @@ public class Editor {
         		//Print last occurrence of word
         		System.out.println(values.get(values.size()-1) + "]");
         	}
-        	
-        	
-        	
         }
       }
 
