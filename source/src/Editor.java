@@ -80,10 +80,10 @@ public class Editor {
         output.printNumberedParagraph(Editor.getParagraphs());
     }
 
-    void replace(OutputInput whichParagraph, String Paragraph, String oldWord, String newWord) {
+    void replace(int whichParagraph, String Paragraph, String oldWord, String newWord) {
         //Replaces a choosen String with a new one
         String paragraph = Paragraph.replaceFirst(oldWord, newWord);
-        paragraphs.set(Integer.parseInt(whichParagraph.getInput()) - ARRAY_OFFSET, paragraph);
+        paragraphs.set(whichParagraph - ARRAY_OFFSET, paragraph);
         output.printNumberedParagraph(Editor.getParagraphs());
     }
 

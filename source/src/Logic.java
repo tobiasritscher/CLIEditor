@@ -121,27 +121,30 @@ public class Logic {
                 OutputInput chooseParagraph;
                 String chosenParagraph;
                 OutputInput oldWord;
+                int paragraphNumber;
                 boolean wrongParagraph;
                 boolean wrongWord;
                 do {
                     wrongParagraph = false;
                     chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-                    if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > Editor.paragraphs.size()) {
+                    paragraphNumber = Integer.parseInt(chooseParagraph.getInput());
+
+                    if (paragraphNumber < 1 || paragraphNumber > Editor.paragraphs.size()) {
                         output.print("Wrong paragraph. PLease try again");
                         wrongParagraph = true;
                     }
                 } while (wrongParagraph);
-                chosenParagraph = Editor.paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
+                chosenParagraph = Editor.paragraphs.get(paragraphNumber - 1);
                 do {
                     wrongWord = false;
-                    oldWord = new OutputInput("Whhich word would you like to replace?");
+                    oldWord = new OutputInput("Which word would you like to replace?");
                     if (!chosenParagraph.contains(oldWord.getInput())) {
                         output.print("Attention! Word does not exist in this paragraph!");
                         wrongWord = true;
                     }
                 } while (wrongWord);
                 OutputInput newWord = new OutputInput("Which is the new word?");
-                editor.replace(chooseParagraph, chosenParagraph, oldWord.getInput(), newWord.getInput());
+                editor.replace(paragraphNumber, chosenParagraph, oldWord.getInput(), newWord.getInput());
                 break;
 
             case INDEX_WORDS:
