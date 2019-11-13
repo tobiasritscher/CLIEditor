@@ -205,8 +205,8 @@ public class Editor {
                 paragraphLength = s.length() + COUNT_SPACES + paragraphLength - counter * maxLength;
             }
         }
-        output.print(text.toString());
-        return text.toString();
+        output.print(text.toString().replaceAll(" \n","\n"));
+        return text.toString().replaceAll(" \n","\n");
     }
 
     private List<String> words(List<String> text) {

@@ -6,6 +6,9 @@ public class Logic {
     private static Editor editor;
     private static Output output;
 
+    /**
+     * constructor of the class Logic
+     */
     public Logic() {
         editor = new Editor();
         output = new Output();

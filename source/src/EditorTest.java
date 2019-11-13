@@ -64,9 +64,9 @@ public class EditorTest {
 
     @Test
     void testFormattedText() {
-        String expectedString = "The quick\nbrown fox \njumps over \nthe lazy \nbrown dog\n"
-                + "The lazy \ndog jumps \nover the \nquick \nbrown fox \n"
-                + "The lazy \nfox jumps \nover the \nquick \nbrown dog ";
+        String expectedString = "The quick\nbrown fox\njumps over\nthe lazy\nbrown dog\n"
+                + "The lazy\ndog jumps\nover the\nquick\nbrown fox\n"
+                + "The lazy\nfox jumps\nover the\nquick\nbrown dog ";
         assertEquals(errorText, expectedString, editor.printFormattedText("10"));
     }
 
