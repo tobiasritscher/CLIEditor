@@ -13,7 +13,7 @@ public class Editor {
     private static Output output;
     private static LoremIpsum loremIpsum;
     private static Map<String, List<Integer>> wordIndex = new TreeMap<>();
-    private static int ARRAY_OFFSET = 1;
+    private final static int ARRAY_OFFSET = 1;
 
     /**
      * Constructor of the class Editor
@@ -176,6 +176,7 @@ public class Editor {
      * @param lengthInput int > 0 for the maxLength of the paragraph
      */
     public void printFormatedText(String lengthInput) {
+        final int COUNT_SPACES = 1;
         int maxLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
         StringBuilder text = new StringBuilder();
@@ -191,36 +192,34 @@ public class Editor {
             if (paragraphLength + s.length() <= maxLength) {
                 text.append(s);
                 text.append(" ");
-                paragraphLength += s.length() + 1;
+                paragraphLength += s.length() + COUNT_SPACES;
                 // if word doesn't fit into line -> put it on next line
             } else if (paragraphLength + s.length() > maxLength && s.length() <= maxLength) {
                 text.append("\n");
                 text.append(s);
                 text.append(" ");
-                paragraphLength = s.length() + 1;
+                paragraphLength = s.length() + COUNT_SPACES;
                 // if word is longer then maxlength -> put it on several lines parted by "-"
             } else if (s.length() > maxLength) {
                 int paragraphLengthCache = paragraphLength;
-                int i = 0;
+                int counter = 0;
                 int startOfSubstring = 0;
                 int lengthOfWord = s.length();
                 do {
                     int endOfSubstring = startOfSubstring + maxLength - paragraphLengthCache;
-                    ;
-
                     text.append(s, startOfSubstring, endOfSubstring);
-
                     text.append("\n-");
-                    i++;
+
+                    counter++;
                     paragraphLengthCache = 0;
                     lengthOfWord -= (endOfSubstring - startOfSubstring);
                     startOfSubstring = endOfSubstring;
                 } while (lengthOfWord > maxLength);
 
-                text.append(s.substring(i * maxLength - paragraphLength));
+                text.append(s.substring(counter * maxLength - paragraphLength));
                 text.append(" ");
 
-                paragraphLength = s.length() + 1 + paragraphLength - i * maxLength;
+                paragraphLength = s.length() + COUNT_SPACES + paragraphLength - counter * maxLength;
             }
         }
         output.print(text.toString());
