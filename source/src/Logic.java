@@ -11,6 +11,27 @@ public class Logic {
 		output = new Output();
 	}
 
+	public enum ChoosenOption {
+	    STOP(0),
+	    PRINT_PARAGRAPHS(1),
+        INSERT_PARAGRAPH(2),
+        DELETE_PARAGRAPH(3),
+        REPLACE_WORD(4),
+        INDEX_WORDS(5),
+        PRINT_FORMATED_TEXT(6);
+
+        private final int choosenOptionCode;
+
+        ChoosenOption(int choosenOptionCode) {
+            this.choosenOptionCode = choosenOptionCode;
+        }
+
+        public int getchoosenOptionCode() {
+            return this.choosenOptionCode;
+        }
+
+    }
+
 	/**
 	 * main method of the programm, here it all begins
 	 *
