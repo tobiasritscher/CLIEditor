@@ -175,7 +175,7 @@ public class Editor {
      *
      * @param lengthInput int > 0 for the maxLength of the paragraph
      */
-    public void formatedText(String lengthInput) {
+    public void printFormatedText(String lengthInput) {
         int maxLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
         StringBuilder text = new StringBuilder();
@@ -191,13 +191,13 @@ public class Editor {
             if (paragraphLength + s.length() <= maxLength) {
                 text.append(s);
                 text.append(" ");
-                paragraphLength += s.length();
+                paragraphLength += s.length() + 1;
                 // if word doesn't fit into line -> put it on next line
             } else if (paragraphLength + s.length() > maxLength && s.length() <= maxLength) {
                 text.append("\n");
                 text.append(s);
                 text.append(" ");
-                paragraphLength = s.length();
+                paragraphLength = s.length() + 1;
                 // if word is longer then maxlength -> put it on several lines parted by "-"
             } else if (s.length() > maxLength) {
                 int paragraphLengthCache = paragraphLength;
@@ -220,7 +220,7 @@ public class Editor {
                 text.append(s.substring(i * maxLength - paragraphLength));
                 text.append(" ");
 
-                paragraphLength = s.length() + paragraphLength - i * maxLength;
+                paragraphLength = s.length() + 1 + paragraphLength - i * maxLength;
             }
         }
         output.print(text.toString());

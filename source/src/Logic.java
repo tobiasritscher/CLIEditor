@@ -71,7 +71,7 @@ public class Logic {
 			break;
 		case "6":
 			OutputInput chooseParagraphLength = new OutputInput("How long should your paragraphs be?: ");
-			editor.formatedText(chooseParagraphLength.getInput());
+			editor.printFormatedText(chooseParagraphLength.getInput());
 			break;
 		default:
 			output.print("Wrong input, try again!");
