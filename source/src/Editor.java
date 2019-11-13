@@ -79,16 +79,18 @@ public class Editor {
      */
     void replace() {
         boolean wrongWord;
+        boolean wrongParagraph;
         String chosenParagraph;
         OutputInput chooseParagraph;
         OutputInput oldWord;
         do {
             wrongWord = false;
+            wrongParagraph = false;
             chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
             chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
             oldWord = new OutputInput("Which word would you like to replace?");
-            if (!chosenParagraph.contains(oldWord.getInput())) {
-                System.out.println("Attention! The word you are searching does NOT exist in paragraph: " + chooseParagraph.getInput());
+            if (!chosenParagraph.contains(oldWord.getInput()) || Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > paragraphs.size()) {
+                System.out.println("Attention! Wrong paragraph or word");
                 wrongWord = true;
             }
         } while(wrongWord);
@@ -113,32 +115,31 @@ public class Editor {
     This method saves in which paragraph a given word occurs
      */
     private void indexInParagraph() {
+        // Here it iterates through the different paragraphs
         for (int i = 0; i < paragraphs.size(); i++) {
+            //Each word gets saved into a String array
             String[] words = paragraphs.get(i).split(" ");
 
+            //Iterating through the content of the String array
             for (String word : words) {
                 // Removes special characters and sets the word to lowercase
                 String cleanedWord = cleanInput(word);
 
+                // Operations to perform if a given word has not yet been added to the TreeMap
                 if (wordIndex.get(cleanedWord) == null) {
+                    // Initialize an ArrayList for the information associated to a given word
                     wordIndex.put(cleanedWord, new ArrayList<>());
-
-    				/*
-    				The first element of the array counts the words frequency;
-    				Here it gets initialized.
-    				*/
+                    // The first element of the array counts the words frequency. Here it gets initialized.
                     wordIndex.get(cleanedWord).add(1);
-
                     // The second element of the array indicates in which paragraph the word appears for the first time
                     wordIndex.get(cleanedWord).add(i + 1);
 
                 }
-                // If the word has already appeared once
+                // Operations to perform if the word has already appeared once
                 else {
                     // Increases the word-frequency counter +1
                     wordIndex.get(cleanedWord).set(0, wordIndex.get(cleanedWord).get(0) + 1);
-
-                    // Adds other paragraphs to the Map in which the word occurs
+                    // Adds other numbers of paragraphs in which the word occurs
                     wordIndex.get(cleanedWord).add(i + 1);
                 }
             }
@@ -150,15 +151,20 @@ public class Editor {
      * @param input the word that should be edited
      */
     private String cleanInput(String input) {
-
+        // Remove special characters attached to the word
         String word = input.replaceAll("[^a-zA-Z0-9]+", "");
+        // Sets the word to lowerCase
         word = word.toLowerCase();
+        // Method returns the word so that the main-method can perform additional tasks
         return word;
     }
 
     private void printIndex() {
+        // Initializes the dummy variable that accounts for multiple occurrence of at least one word
         boolean wordOccursMoreThanOnce = false;
+        // Iterates through the TreeMap
         for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()) {
+            // Gets the key and value of a key-value-pair
             String key = word.getKey();
             List<Integer> values = word.getValue();
 
@@ -166,18 +172,18 @@ public class Editor {
             if (values.get(0) > 1) {
                 System.out.print("'" + key + "'");
                 System.out.print(" exists " + values.get(0) + " times in paragraphs [");
+                // Returns the number of all the paragraphs in which the word occurs
                 for (int i = 1; i < values.size() - ARRAY_OFFSET; i++) {
                     System.out.print(values.get(i) + ", ");
                 }
-                //Print last occurrence of word
+                // Returns the paragraph in which the word appears for the last time
                 System.out.println(values.get(values.size() - ARRAY_OFFSET) + "]");
 
-                //Since the word occurs more than once, we need to change the boolean's value
+                //Since the word occurs more than once, we need to set the dummy variable to true
                 wordOccursMoreThanOnce = true;
             }
         }
-
-        //Print error message if no word occurs more than once
+        //Print a warning message if no word occurs more than once
         if (!wordOccursMoreThanOnce) {
             System.out.println("Warning: No word in the given text occurs more than once");
         }
