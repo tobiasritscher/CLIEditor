@@ -76,7 +76,7 @@ public class Editor {
 		OutputInput chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
 		OutputInput oldWord = new OutputInput("Which word would you like to replace?");
 		OutputInput newWord = new OutputInput("Which word would you like to use instead?");
-		String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput())-1); 
+		String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput())-1);
 		chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
 		paragraphs.set(Integer.parseInt(chooseParagraph.getInput())-1, chosenParagraph);
 	}
