@@ -73,21 +73,17 @@ public class Editor {
      * replaces a choosen String with a new one
      */
     public void replace() {
-        OutputInput chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-        OutputInput oldWord = new OutputInput("Which word would you like to replace?");
-        OutputInput newWord = new OutputInput("Which word would you like to use instead?");
-        String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
-        chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
-        paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - 1, chosenParagraph);
+        //TODO: keyword suchen und ersetzen
+
     }
 
     /**
-     * prints an index of all words with the number of occurence and where to find
-     * them
+     * prints an index of all words with the number of occurence and where to find them
      */
     public void indexWords() {
-        output.print("Total number of paragraphs: " + paragraphs.size());
-        output.print("*******************************");
+        System.out.println("Total number of paragraphs: " + paragraphs.size());
+        System.out.println("*******************************");
+
 
         for (int i = 0; i < paragraphs.size(); i++) {
             String[] words = paragraphs.get(i).split(" ");
@@ -98,22 +94,21 @@ public class Editor {
 
                 if (wordIndex.get(word) == null) {
                     wordIndex.put(word, new ArrayList<>());
-
-                    /*
-                     * Das erste Element des Arrays zählt die Häufigkeit des Wortes. Hier wird es
-                     * initialisiert.
-                     */
+    				
+    				/*
+    				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
+    				Hier wird es initialisiert.
+    				*/
                     wordIndex.get(word).add(1);
 
-                    // Das zweite Element des Arrays gibt an, in welchem Paragraph das Wort zum
-                    // ersten Mal auftritt
+                    // Das zweite Element des Arrays gibt an, in welchem Paragraph das Wort zum ersten Mal auftritt
                     wordIndex.get(word).add(i + 1);
 
                 } else {
-                    // wordIndex.put(word,wordFrequency + 1);
+                    //wordIndex.put(word,wordFrequency + 1);
                     wordIndex.get(word).set(0, wordIndex.get(word).get(0) + 1);
 
-                    // Fügt hinzu, in welchem Paragraphen das Wort noch auftritt
+                    //Fügt hinzu, in welchem Paragraphen das Wort noch auftritt
                     wordIndex.get(word).add(i + 1);
                 }
             }
@@ -122,7 +117,7 @@ public class Editor {
     }
 
     private void indexInParagraph() {
-        // TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
+        //TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
     }
 
     private void printIndex() {
@@ -130,73 +125,29 @@ public class Editor {
             String key = word.getKey();
             List<Integer> values = word.getValue();
 
-            // Nur ausgeben, wenn das Wort häufiger als ein mal vorkommt
+            //Nur ausgeben, wenn das Wort häufiger als ein mal vorkommt
             if (values.get(0) > 1) {
                 System.out.print("'" + key + "'");
                 System.out.print(" exists " + values.get(0) + " times in paragraphs [");
                 for (int i = 1; i < values.size() - ARRAY_OFFSET; i++) {
                     System.out.print(values.get(i) + ", ");
                 }
-                // Print last occurrence of word
+                //Print last occurrence of word
                 System.out.println(values.get(values.size() - ARRAY_OFFSET) + "]");
             }
         }
     }
 
     /**
-     * This method formats the text with a chosen length of the paragraph
-     *
-     * @param lengthInput int > 0 for the maxLength of the paragraph
+     * TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
+     * Zeilenumbruch jeweils auf dem letzten Lehrzeichen
+     * (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
      */
     public void formatedText(String lengthInput) {
-        int maxLength = Integer.parseInt(lengthInput);
+        int paragraphLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
-        StringBuilder text = new StringBuilder();
-        int paragraphLength = 0;
 
-        for (String s : wordList) {
 
-            if (paragraphLength >= maxLength) {
-                text.append("\n");
-                paragraphLength = 0;
-            }
-            // if word fits into line -> put it there
-            if (paragraphLength + s.length() <= maxLength) {
-                text.append(s);
-                text.append(" ");
-                paragraphLength += s.length();
-                // if word doesn't fit into line -> put it on next line
-            } else if (paragraphLength + s.length() > maxLength && s.length() <= maxLength) {
-                text.append("\n");
-                text.append(s);
-                text.append(" ");
-                paragraphLength = s.length();
-                // if word is longer then maxlength -> put it on several lines parted by "-"
-            } else if (s.length() > maxLength) {
-                int paragraphLengthCache = paragraphLength;
-                int i = 0;
-                int startOfSubstring = 0;
-                int lengthOfWord = s.length();
-                do {
-                    int endOfSubstring = startOfSubstring + maxLength - paragraphLengthCache;
-                    ;
-
-                    text.append(s, startOfSubstring, endOfSubstring);
-
-                    text.append("\n-");
-                    i++;
-                    paragraphLengthCache = 0;
-                    lengthOfWord -= (endOfSubstring - startOfSubstring);
-                    startOfSubstring = endOfSubstring;
-                } while (lengthOfWord > maxLength);
-
-                text.append(s.substring(i * maxLength - paragraphLength));
-                text.append(" ");
-
-                paragraphLength = s.length() + paragraphLength - i * maxLength;
-            }
-        }
-        output.print(text.toString());
     }
 
     private List<String> words(List<String> text) {
@@ -218,3 +169,4 @@ public class Editor {
         return wordsBuilder.toString();
     }
 }
+ 
