@@ -78,28 +78,33 @@ public class Editor {
      * Replaces a choosen String with a new one
      */
     void replace() {
-        boolean wrongWord;
-        boolean wrongParagraph;
+        boolean wrongWord ;
+        boolean wrongParagraph ;
         String chosenParagraph;
         OutputInput chooseParagraph;
         OutputInput oldWord;
         do {
             wrongWord = false;
-            wrongParagraph = false;
-            chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-            chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
-            oldWord = new OutputInput("Which word would you like to replace?");
-            if (!chosenParagraph.contains(oldWord.getInput()) || Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > paragraphs.size()) {
-                System.out.println("Attention! Wrong paragraph or word");
-                wrongWord = true;
-            }
-        } while(wrongWord);
+            do {
+                wrongParagraph = false;
+                chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
+                if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > paragraphs.size()) {
+                    System.out.println("Attention! Wrong paragraph");
+                    wrongParagraph = true;}
+                } while(wrongParagraph);
+                chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
+                oldWord = new OutputInput("Which word would you like to replace?");
+                if (!chosenParagraph.contains(oldWord.getInput())) {
+                    System.out.println("Attention! Wrong word");
+                    wrongWord = true;
+                }
+            } while (wrongWord);
 
             OutputInput newWord = new OutputInput("Which word would you like to use instead?");
             chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
             paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET, chosenParagraph);
+        }
 
-    }
 
     /**
      * prints an index of all words with the number of occurence and where to find them
@@ -150,7 +155,7 @@ public class Editor {
      * This method removes special characters from its input and sets it to lower-case
      * @param input the word that should be edited
      */
-    private String cleanInput(String input) {
+    String cleanInput(String input) {
         // Remove special characters attached to the word
         String word = input.replaceAll("[^a-zA-Z0-9]+", "");
         // Sets the word to lowerCase

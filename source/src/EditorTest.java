@@ -1,16 +1,18 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 
 public class EditorTest {
-    Editor editor;
-    private String test1 = "The quick brown fox jumps over the lazy dog";
-    private String test2 = "The lazy dog jumps over the quick brown fox";
-    private String test3 = "The lazy fox jumps over the quick brown dog";
-    private String errorText = "Text stimmt nicht ueberein!";
+    private Editor editor;
+    private final String test1 = "The quick brown fox jumps over the lazy dog";
+    private final String test2 = "The lazy dog jumps over the quick brown fox";
+    private final String test3 = "The lazy fox jumps over the quick brown dog";
+    private final String errorText = "Text stimmt nicht ueberein!";
     private ArrayList<String> testParagraph = new ArrayList<String>();
 
     @BeforeEach
@@ -19,7 +21,7 @@ public class EditorTest {
         testParagraph.add(test1);
         testParagraph.add(test2);
         testParagraph.add(test3);
-        editor.setParagraphs(testParagraph);
+        Editor.setParagraphs(testParagraph);
     }
 
     @AfterEach
@@ -58,4 +60,11 @@ public class EditorTest {
     void testindexWords() {
         // TODO: Methode schreiben
     }
+
+    @Test //TODO: Vererbung implementieren
+    void testCleanInput() {
+        assertEquals(errorText, test1,editor.cleanInput("T.h,e 'q?u!i_c-k 0b*r+ow(n) \"fox jumps over the lazy dog"));
+    }
+
+
 }
