@@ -18,12 +18,18 @@ public class EditorTest {
 
     @Test
     void testChooseAndSetText() {
+        String test1 = "The quick brown fox jumps over the lazy dog";
+        String test2 = "The lazy dog jumps over the quick brown fox";
+
         // 1 Zeile
         ArrayList<String> testParagraph = new ArrayList<String>();
-        testParagraph.add("Lorem ipsum dolor sit amet");
+        testParagraph.add(test1);
+        testParagraph.add(test2);
+
+
 
         editor.setParagraphs(testParagraph);
-        assertEquals("Text stimmt nicht ueberein!", "Lorem ipsum dolor sit amet", Editor.getParagraphs().get(0));
+        assertEquals("Text stimmt nicht ueberein!", test1, Editor.getParagraphs().get(0));
     }
 
 
