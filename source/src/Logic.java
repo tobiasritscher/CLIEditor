@@ -82,8 +82,17 @@ public class Logic {
                 output.printNumberedParagraph(Editor.getParagraphs());
                 break;
             case INSERT_PARAGRAPH:
-                OutputInput chooseParagraphNumber = new OutputInput(
-                        "Please type the position at which you would like your paragraph to be placed at: ");
+                OutputInput chooseParagraphNumber;
+                boolean wrongNumber;
+                do {
+                    wrongNumber = false;
+                    chooseParagraphNumber = new OutputInput(
+                            "Please type the position at which you would like your paragraph to be placed at: ");
+                    if(Integer.parseInt(chooseParagraphNumber.getInput()) < 1 || Integer.parseInt(chooseParagraphNumber.getInput()) > Editor.paragraphs.size()){
+                        System.out.println("Wrong paragraph selected. Try again");
+                        wrongNumber = true;
+                    }
+                }while(wrongNumber);
                 OutputInput chooseNewParagraph = new OutputInput("Now type the desired paragraph: ");
                 editor.insertParagraph(chooseParagraphNumber.getInput(), chooseNewParagraph.getInput());
                 break;

@@ -61,6 +61,7 @@ public class Editor {
     public void insertParagraph(String positionString, String newParagraph) {
         int position = Integer.parseInt(positionString) - ARRAY_OFFSET;
         paragraphs.add(position, newParagraph);
+        output.printNumberedParagraph(Editor.getParagraphs());
     }
 
     /**
