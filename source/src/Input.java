@@ -12,35 +12,38 @@ public class Input {
 	 * Constructor of the class Input
 	 */
 	public Input() {
-    }
+	}
 
 	/**
 	 * reads the input of the user and saves it in an ArrayList spiltted by '\n'
+	 * 
 	 * @return ArrayList with the splitted text
 	 */
-	public List<String> readInput(){
+	public List<String> readInput() {
 		scanner = new Scanner(System.in);
-        ArrayList<String> splitText = new ArrayList<>();
-	    do {
-            splitText.add(scanner.nextLine());
-	    } while (!splitText.get(splitText.size() -1 ).equalsIgnoreCase("END") && scanner.hasNextLine());
+		ArrayList<String> splitText = new ArrayList<>();
+		do {
+			splitText.add(scanner.nextLine());
+		} while (!splitText.get(splitText.size() - 1).equalsIgnoreCase("END") && scanner.hasNextLine());
 
-	    splitText.remove(splitText.size() -1 );
+		splitText.remove(splitText.size() - 1);
 
-	    return splitText;
-    }
+		return splitText;
+	}
 
 	/**
 	 * reads an int from the user input
+	 * 
 	 * @return int
 	 */
 	public int intIn() {
 		scanner = new Scanner(System.in);
-	    return scanner.nextInt();
-    }
+		return scanner.nextInt();
+	}
 
 	/**
 	 * reads a String from the user input
+	 * 
 	 * @return String
 	 */
 	public String stringIn() {
