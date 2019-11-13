@@ -99,31 +99,38 @@ public class Editor {
         for (int i = 0; i < paragraphs.size(); i++) {
             String[] words = paragraphs.get(i).split(" ");
 
-            for (String s : words) {
-                String word = s.replaceAll("[^a-zA-Z0-9]+", "");
-                word = word.toLowerCase();
+            for (String word : words) {
+                //Removing special characters and setting the word to lowercase
+                String cleanedWord = cleanInput(word);
 
-                if (wordIndex.get(word) == null) {
-                    wordIndex.put(word, new ArrayList<>());
+                if (wordIndex.get(cleanedWord) == null) {
+                    wordIndex.put(cleanedWord, new ArrayList<>());
 
     				/*
     				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
     				Hier wird es initialisiert.
     				*/
-                    wordIndex.get(word).add(1);
+                    wordIndex.get(cleanedWord).add(1);
 
                     // Das zweite Element des Arrays gibt an, in welchem Paragraph das Wort zum ersten Mal auftritt
-                    wordIndex.get(word).add(i + 1);
+                    wordIndex.get(cleanedWord).add(i + 1);
 
                 } else {
                     //wordIndex.put(word,wordFrequency + 1);
-                    wordIndex.get(word).set(0, wordIndex.get(word).get(0) + 1);
+                    wordIndex.get(cleanedWord).set(0, wordIndex.get(cleanedWord).get(0) + 1);
 
                     //Fügt hinzu, in welchem Paragraphen das Wort noch auftritt
-                    wordIndex.get(word).add(i + 1);
+                    wordIndex.get(cleanedWord).add(i + 1);
                 }
             }
         }
+    }
+
+    public String cleanInput(String input) {
+
+        String word = input.replaceAll("[^a-zA-Z0-9]+", "");
+        word = word.toLowerCase();
+        return word;
     }
 
     private void printIndex() {
