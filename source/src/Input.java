@@ -32,16 +32,6 @@ public class Input {
     }
 
     /**
-     * reads an int from the user input
-     *
-     * @return int
-     */
-    public int intIn() {
-        scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
-
-    /**
      * reads a String from the user input
      *
      * @return String
