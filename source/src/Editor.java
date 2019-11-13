@@ -95,7 +95,7 @@ public class Editor {
             String[] words = paragraphs.get(i).split(" ");
 
             for (String s : words) {
-                String word = s.replaceAll("[,.]", "");
+                String word = s.replaceAll("[^a-zA-Z0-9]+", "");
                 word = word.toLowerCase();
 
                 if (wordIndex.get(word) == null) {
@@ -126,7 +126,7 @@ public class Editor {
             String key = word.getKey();
             List<Integer> values = word.getValue();
 
-            //Nur ausgeben, wenn das Wort häufiger als ein mal vorkommt
+            //Print only if the word occurs more than once
             if (values.get(0) > 1) {
                 System.out.print("'" + key + "'");
                 System.out.print(" exists " + values.get(0) + " times in paragraphs [");
