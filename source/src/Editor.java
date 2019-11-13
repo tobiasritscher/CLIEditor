@@ -77,7 +77,7 @@ public class Editor {
     /**
      * Replaces a choosen String with a new one
      */
-    public void replace() {
+    void replace() {
         boolean wrongWord;
         String chosenParagraph;
         OutputInput chooseParagraph;
