@@ -21,7 +21,7 @@ public class EditorTest {
         testParagraph.add(test1);
         testParagraph.add(test2);
         testParagraph.add(test3);
-        Editor.setParagraphs(testParagraph);
+        Editor.setParagraphs(testParagraph); //ArrayList in Editor einspeisen
     }
 
     @AfterEach
@@ -42,7 +42,6 @@ public class EditorTest {
         editor.insertParagraph("2", paragraphToInsert);
         assertEquals(errorText, paragraphToInsert, Editor.getParagraphs().get(1));
         assertEquals(errorText, test2, Editor.getParagraphs().get(2));
-
     }
 
     @Test
@@ -61,10 +60,21 @@ public class EditorTest {
         // TODO: Methode schreiben
     }
 
-    @Test //TODO: Vererbung implementieren
+    @Test
     void testCleanInput() {
-        assertEquals(errorText, test1,editor.cleanInput("T.h,e 'q?u!i_c-k 0b*r+ow(n) \"fox jumps over the lazy dog"));
+        assertEquals(errorText, "thequickbrown123", editor.cleanInput("#t.h,e& 'q?u!i_c-k b*r+ow(n)1\"2%3§"));
     }
 
+    @Test
+    void testFormattedText() {
+        String expectedString = "The quick\nbrown fox \njumps over \nthe lazy \nbrown dog\n"
+                + "The lazy \ndog jumps \nover the \nquick \nbrown fox \n"
+                + "The lazy \nfox jumps \nover the \nquick \nbrown dog ";
+        assertEquals(errorText, expectedString, editor.printFormattedText("10"));
+    }
 
+    @Test
+    void testListToString() {
+        assertEquals(errorText, test1 + " " + test2 + " " + test3 + " ", editor.listToString(testParagraph));
+    }
 }

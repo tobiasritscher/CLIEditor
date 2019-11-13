@@ -79,8 +79,8 @@ public class Editor {
      */
     void replace(OutputInput whichParagraph, String Paragraph, String oldWord, String newWord) {
         String paragraph = Paragraph.replaceFirst(oldWord, newWord);
-        paragraphs.set(Integer.parseInt(whichParagraph.getInput())-1, paragraph);
-        }
+        paragraphs.set(Integer.parseInt(whichParagraph.getInput()) - 1, paragraph);
+    }
 
 
     /**
@@ -176,7 +176,7 @@ public class Editor {
      *
      * @param lengthInput int > 0 for the maxLength of the paragraph
      */
-    public void printFormattedText(String lengthInput) {
+    public String printFormattedText(String lengthInput) {
         final int COUNT_SPACES = 1;
         int maxLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
@@ -224,6 +224,7 @@ public class Editor {
             }
         }
         output.print(text.toString());
+        return text.toString();
     }
 
     private List<String> words(List<String> text) {
@@ -232,7 +233,7 @@ public class Editor {
         return Arrays.asList(textString.split(" "));
     }
 
-    private String listToString(List<String> text) {
+    String listToString(List<String> text) {
         StringBuilder wordsBuilder = new StringBuilder();
 
         for (String value : text) {
