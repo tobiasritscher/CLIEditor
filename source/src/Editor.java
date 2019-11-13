@@ -82,8 +82,8 @@ public class Editor {
 	 * them
 	 */
 	public void indexWords() {
-		System.out.println("Total number of paragraphs: " + paragraphs.size());
-		System.out.println("*******************************");
+		output.print("Total number of paragraphs: " + paragraphs.size());
+		output.print("*******************************");
 
 		for (int i = 0; i < paragraphs.size(); i++) {
 			String[] words = paragraphs.get(i).split(" ");
