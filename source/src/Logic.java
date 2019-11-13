@@ -144,7 +144,7 @@ public class Logic {
                     }
                 } while (wrongWord);
                 OutputInput newWord = new OutputInput("Which is the new word?");
-                editor.replace(paragraphNumber, chosenParagraph, oldWord.getInput(), newWord.getInput());
+                editor.replace(paragraphNumber, oldWord.getInput(), newWord.getInput());
                 break;
 
             case INDEX_WORDS:
