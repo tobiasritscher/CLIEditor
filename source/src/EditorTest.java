@@ -10,10 +10,12 @@ class EditorTest {
 	public void SetUp() {
 		
 	}
-	 
+
 	@Test
 	void test() {
 		
 	}
 
 }
+
+
