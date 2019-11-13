@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class EditorTest {
@@ -64,8 +66,8 @@ public class EditorTest {
 
     @Test
     void testFormattedText() {
-        String expectedString = "The quick\nbrown fox\njumps over\nthe lazy\nbrown dog\n"
-                + "The lazy\ndog jumps\nover the\nquick\nbrown fox\n"
+        String expectedString = "The quick\nbrown fox\njumps over\nthe lazy\ndog "
+                + "The\nlazy dog\njumps over\nthe quick\nbrown fox\n"
                 + "The lazy\nfox jumps\nover the\nquick\nbrown dog ";
         assertEquals(errorText, expectedString, editor.printFormattedText("10"));
     }

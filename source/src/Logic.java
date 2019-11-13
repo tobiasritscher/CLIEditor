@@ -77,13 +77,16 @@ public class Logic {
         // switch case to choose the option
         assert chosenOption != null;
         switch (chosenOption) {
+
             case STOP:
                 output.printNumberedParagraph(Editor.getParagraphs());
                 stopProgramm = true;
                 break;
+
             case PRINT_PARAGRAPHS:
                 output.printNumberedParagraph(Editor.getParagraphs());
                 break;
+
             case INSERT_PARAGRAPH:
                 OutputInput chooseParagraphNumber;
                 boolean wrongNumber;
@@ -91,27 +94,29 @@ public class Logic {
                     wrongNumber = false;
                     chooseParagraphNumber = new OutputInput(
                             "Please type the position at which you would like your paragraph to be placed at: ");
-                    if(Integer.parseInt(chooseParagraphNumber.getInput()) < 1 || Integer.parseInt(chooseParagraphNumber.getInput()) > Editor.paragraphs.size()){
-                        System.out.println("Wrong paragraph selected. Try again");
+                    if (Integer.parseInt(chooseParagraphNumber.getInput()) < 1 || Integer.parseInt(chooseParagraphNumber.getInput()) > Editor.paragraphs.size()) {
+                        output.print("Wrong paragraph selected. Try again");
                         wrongNumber = true;
                     }
-                }while(wrongNumber);
+                } while (wrongNumber);
                 OutputInput chooseNewParagraph = new OutputInput("Now type the desired paragraph: ");
                 editor.insertParagraph(chooseParagraphNumber.getInput(), chooseNewParagraph.getInput());
                 break;
+
             case DELETE_PARAGRAPH:
                 OutputInput chooseParagraphToDelete;
                 boolean wrongNumberedParagraph;
                 do {
                     wrongNumberedParagraph = false;
                     chooseParagraphToDelete = new OutputInput("Which paragraph would you like to delete?: ");
-                    if (Integer.parseInt(chooseParagraphToDelete.getInput()) < 1 || Integer.parseInt(chooseParagraphToDelete.getInput()) > Editor.paragraphs.size()){
-                        System.out.println("Wrong number! Please type a correct Paragraph number!");
+                    if (Integer.parseInt(chooseParagraphToDelete.getInput()) < 1 || Integer.parseInt(chooseParagraphToDelete.getInput()) > Editor.paragraphs.size()) {
+                        output.print("Wrong number! Please type a correct Paragraph number!");
                         wrongNumberedParagraph = true;
                     }
-                }while(wrongNumberedParagraph);
+                } while (wrongNumberedParagraph);
                 editor.deleteParagraph(chooseParagraphToDelete.getInput());
                 break;
+
             case REPLACE_WORD:
                 OutputInput chooseParagraph;
                 String chosenParagraph;
@@ -122,7 +127,7 @@ public class Logic {
                     wrongParagraph = false;
                     chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
                     if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > Editor.paragraphs.size()) {
-                        System.out.println("Wrong paragraph. PLease try again");
+                        output.print("Wrong paragraph. PLease try again");
                         wrongParagraph = true;
                     }
                 } while (wrongParagraph);
@@ -131,20 +136,23 @@ public class Logic {
                     wrongWord = false;
                     oldWord = new OutputInput("Whhich word would you like to replace?");
                     if (!chosenParagraph.contains(oldWord.getInput())) {
-                        System.out.println("Attention! Word does not exist in this paragraph!");
+                        output.print("Attention! Word does not exist in this paragraph!");
                         wrongWord = true;
                     }
                 } while (wrongWord);
                 OutputInput newWord = new OutputInput("Which is the new word?");
                 editor.replace(chooseParagraph, chosenParagraph, oldWord.getInput(), newWord.getInput());
                 break;
+
             case INDEX_WORDS:
                 editor.indexWords();
                 break;
+
             case PRINT_FORMATED_TEXT:
                 OutputInput chooseParagraphLength = new OutputInput("How long should your paragraphs be?: ");
                 editor.printFormattedText(chooseParagraphLength.getInput());
                 break;
+
             default:
                 output.print("Wrong input, try again!");
                 break;

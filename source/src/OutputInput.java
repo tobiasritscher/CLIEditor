@@ -14,7 +14,7 @@ public class OutputInput {
         input = inObject.stringIn();
     }
 
-	public String getInput() {
+    public String getInput() {
         return input;
     }
 }

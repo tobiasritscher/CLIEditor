@@ -89,8 +89,8 @@ public class Editor {
 
     public void indexWords() {
         // prints an index of all words with the number of occurence and where to find them
-        System.out.println("Total number of paragraphs: " + paragraphs.size());
-        System.out.println("*******************************");
+        output.print("Total number of paragraphs: " + paragraphs.size());
+        output.print("*******************************");
         indexInParagraph();
         printIndex();
     }
@@ -142,14 +142,14 @@ public class Editor {
                     System.out.print(values.get(i) + ", ");
                 }
 
-                System.out.println(values.get(values.size() - ARRAY_OFFSET) + "]");
+                output.print(values.get(values.size() - ARRAY_OFFSET) + "]");
 
                 wordOccursMoreThanOnce = true;
             }
         }
 
         if (!wordOccursMoreThanOnce) {
-            System.out.println("Warning: No word in the given text occurs more than once");
+            output.print("Warning: No word in the given text occurs more than once");
         }
     }
 
@@ -205,8 +205,8 @@ public class Editor {
                 paragraphLength = s.length() + COUNT_SPACES + paragraphLength - counter * maxLength;
             }
         }
-        output.print(text.toString().replaceAll(" \n","\n"));
-        return text.toString().replaceAll(" \n","\n");
+        output.print(text.toString().replaceAll(" \n", "\n"));
+        return text.toString().replaceAll(" \n", "\n");
     }
 
     private List<String> words(List<String> text) {
