@@ -10,7 +10,7 @@ public class EditorTest {
     private final String test2 = "The lazy dog jumps over the quick brown fox";
     private final String test3 = "The lazy fox jumps over the quick brown dog";
     private final String errorText = "Text stimmt nicht ueberein!";
-    private ArrayList<String> testParagraph = new ArrayList<String>();
+    private ArrayList<String> testParagraph = new ArrayList<>();
 
     @BeforeEach
     public void SetUp() {

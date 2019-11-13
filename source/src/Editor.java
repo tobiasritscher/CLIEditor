@@ -177,7 +177,7 @@ public class Editor {
      *
      * @param lengthInput int > 0 for the maxLength of the paragraph
      */
-    public void printFormattedText(String lengthInput) {
+    public String printFormattedText(String lengthInput) {
         final int COUNT_SPACES = 1;
         int maxLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
@@ -225,6 +225,7 @@ public class Editor {
             }
         }
         output.print(text.toString());
+        return text.toString();
     }
 
     private List<String> words(List<String> text) {
