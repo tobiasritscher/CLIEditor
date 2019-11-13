@@ -34,7 +34,7 @@ public class Logic {
 
 	private void printOptions() {
 		String[] options = { "\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
-				"2: Insert paragraph", "3: Delete paragraph", "4: Replace a paragraph", "5: Index Words",
+				"2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph", "5: Index Words",
 				"6: Print formated text" };
 		// print all the options
 		for (String s : options) {
