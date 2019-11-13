@@ -120,6 +120,7 @@ public class Editor {
         //TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
     }
 
+
     private void printIndex() {
         for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()) {
             String key = word.getKey();
