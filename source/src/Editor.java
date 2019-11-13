@@ -81,9 +81,9 @@ public class Editor {
         OutputInput chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
         OutputInput oldWord = new OutputInput("Which word would you like to replace?");
         OutputInput newWord = new OutputInput("Which word would you like to use instead?");
-        String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput())-1);
+        String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
         chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
-        paragraphs.set(Integer.parseInt(chooseParagraph.getInput())-1, chosenParagraph);
+        paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - 1, chosenParagraph);
     }
 
     /**
@@ -149,15 +149,59 @@ public class Editor {
     }
 
     /**
-     * TODO: Formatierte Ausgabe von Text mit einer einstellbaren maximalen Spaltenbreite Zeichen,
-     * Zeilenumbruch jeweils auf dem letzten Lehrzeichen
-     * (bei zu langen Wörtern an beliebiger Stelle innerhalb des Wortes)
+     * This method formats the text with a chosen length of the paragraph
+     *
+     * @param lengthInput int > 0 for the maxLength of the paragraph
      */
     public void formatedText(String lengthInput) {
-        int paragraphLength = Integer.parseInt(lengthInput);
+        int maxLength = Integer.parseInt(lengthInput);
         List<String> wordList = words(paragraphs);
+        StringBuilder text = new StringBuilder();
+        int paragraphLength = 0;
 
+        for (String s : wordList) {
 
+            if (paragraphLength >= maxLength) {
+                text.append("\n");
+                paragraphLength = 0;
+            }
+            // if word fits into line -> put it there
+            if (paragraphLength + s.length() <= maxLength) {
+                text.append(s);
+                text.append(" ");
+                paragraphLength += s.length();
+                // if word doesn't fit into line -> put it on next line
+            } else if (paragraphLength + s.length() > maxLength && s.length() <= maxLength) {
+                text.append("\n");
+                text.append(s);
+                text.append(" ");
+                paragraphLength = s.length();
+                // if word is longer then maxlength -> put it on several lines parted by "-"
+            } else if (s.length() > maxLength) {
+                int paragraphLengthCache = paragraphLength;
+                int i = 0;
+                int startOfSubstring = 0;
+                int lengthOfWord = s.length();
+                do {
+                    int endOfSubstring = startOfSubstring + maxLength - paragraphLengthCache;
+                    ;
+
+                    text.append(s, startOfSubstring, endOfSubstring);
+
+                    text.append("\n-");
+                    i++;
+                    paragraphLengthCache = 0;
+                    lengthOfWord -= (endOfSubstring - startOfSubstring);
+                    startOfSubstring = endOfSubstring;
+                } while (lengthOfWord > maxLength);
+
+                text.append(s.substring(i * maxLength - paragraphLength));
+                text.append(" ");
+
+                paragraphLength = s.length() + paragraphLength - i * maxLength;
+            }
+        }
+        output.print(text.toString());
     }
 
     private List<String> words(List<String> text) {
