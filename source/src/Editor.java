@@ -117,6 +117,10 @@ public class Editor {
         }
     }
 
+    static Map<String, List<Integer>> getWordIndex() {
+        return wordIndex;
+    }
+
     // This method removes special characters from its input and sets it to lower-case
     String cleanInput(String input) {
         // Remove special characters attached to the word

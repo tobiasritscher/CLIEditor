@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,12 +52,15 @@ public class EditorTest {
 
     @Test
     void testReplace() {
-        // TODO: Methode schreiben
+        editor.replace(1, "fox", "wolf");
+        assertEquals(errorText, "The quick brown wolf jumps over the lazy dog", Editor.getParagraphs().get(0));
     }
 
     @Test
-    void testindexWords() {
-        // TODO: Methode schreiben
+    void testIndexWords() {
+        editor.indexWords();
+        List<Integer> testList = new ArrayList<>(Arrays.asList(3,1,2,3));
+        assertEquals("Wortzahl stimmt nicht überein!", testList, editor.getWordIndex().get("fox"));
     }
 
     @Test
