@@ -74,7 +74,12 @@ public class Editor {
      */
     public void replace() {
         //TODO: keyword suchen und ersetzen
-
+        OutputInput chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
+        OutputInput oldWord = new OutputInput("Which word would you like to replace?");
+        OutputInput newWord = new OutputInput("Which word would you like to use instead?");
+        String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput())-1);
+        chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
+        paragraphs.set(Integer.parseInt(chooseParagraph.getInput())-1, chosenParagraph);
     }
 
     /**
@@ -83,18 +88,24 @@ public class Editor {
     public void indexWords() {
         System.out.println("Total number of paragraphs: " + paragraphs.size());
         System.out.println("*******************************");
+        indexInParagraph();
+        printIndex();
+    }
 
-
+    /*
+    This method saves in which paragraph a given word occurs
+     */
+    private void indexInParagraph() {
         for (int i = 0; i < paragraphs.size(); i++) {
             String[] words = paragraphs.get(i).split(" ");
 
             for (String s : words) {
-                String word = s.replaceAll("[,.]", "");
+                String word = s.replaceAll("[^a-zA-Z0-9]+", "");
                 word = word.toLowerCase();
 
                 if (wordIndex.get(word) == null) {
                     wordIndex.put(word, new ArrayList<>());
-    				
+
     				/*
     				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
     				Hier wird es initialisiert.
@@ -113,11 +124,6 @@ public class Editor {
                 }
             }
         }
-        printIndex();
-    }
-
-    private void indexInParagraph() {
-        //TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
     }
 
     private void printIndex() {
@@ -125,7 +131,7 @@ public class Editor {
             String key = word.getKey();
             List<Integer> values = word.getValue();
 
-            //Nur ausgeben, wenn das Wort häufiger als ein mal vorkommt
+            //Print only if the word occurs more than once
             if (values.get(0) > 1) {
                 System.out.print("'" + key + "'");
                 System.out.print(" exists " + values.get(0) + " times in paragraphs [");
