@@ -233,7 +233,7 @@ public class Editor {
         return Arrays.asList(textString.split(" "));
     }
 
-    private String listToString(List<String> text) {
+     String listToString(List<String> text) {
         StringBuilder wordsBuilder = new StringBuilder();
 
         for (String value : text) {
