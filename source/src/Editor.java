@@ -83,18 +83,24 @@ public class Editor {
     public void indexWords() {
         System.out.println("Total number of paragraphs: " + paragraphs.size());
         System.out.println("*******************************");
-
+        indexInParagraph();
+        printIndex();
+    }
+    /******
+    * This method saves in which paragraph(s) the different words occur
+    */
+     private void indexInParagraph() {
 
         for (int i = 0; i < paragraphs.size(); i++) {
             String[] words = paragraphs.get(i).split(" ");
 
             for (String s : words) {
-                String word = s.replaceAll("[,.]", "");
+                String word = s.replaceAll("[^a-zA-Z0-9]+","");
                 word = word.toLowerCase();
 
                 if (wordIndex.get(word) == null) {
                     wordIndex.put(word, new ArrayList<>());
-    				
+
     				/*
     				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
     				Hier wird es initialisiert.
@@ -113,19 +119,15 @@ public class Editor {
                 }
             }
         }
-        printIndex();
     }
 
-    private void indexInParagraph() {
-        //TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
-    }
-
+    //This function prints the index onto the command-line
     private void printIndex() {
         for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()) {
             String key = word.getKey();
             List<Integer> values = word.getValue();
 
-            //Nur ausgeben, wenn das Wort häufiger als ein mal vorkommt
+            // Print only if the word exists more than once
             if (values.get(0) > 1) {
                 System.out.print("'" + key + "'");
                 System.out.print(" exists " + values.get(0) + " times in paragraphs [");
@@ -152,7 +154,6 @@ public class Editor {
 
     private List<String> words(List<String> text) {
         String textString = listToString(text);
-
         return Arrays.asList(textString.split(" "));
     }
 
