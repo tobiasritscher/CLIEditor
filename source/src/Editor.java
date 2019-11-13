@@ -8,7 +8,7 @@ import java.util.Arrays;
  * This Class handels all the editing of the text
  */
 public class Editor {
-    public static List<String> paragraphs;
+    private static List<String> paragraphs;
     private static Input input;
     private static Output output;
     private static LoremIpsum loremIpsum;
