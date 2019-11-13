@@ -20,7 +20,7 @@ public class EditorTest {
     private final String test1 = "The quick brown fox jumps over the lazy dog";
     private final String test2 = "The lazy dog jumps over the quick brown fox";
     private final String test3 = "The lazy fox jumps over the quick brown dog";
-    private final String errorText = "Text stimmt nicht ueberein!";
+    private final String errorText = "Text doesn't match expected result!";
     private ArrayList<String> testParagraph = new ArrayList<>();
 
     @BeforeEach
@@ -83,7 +83,7 @@ public class EditorTest {
     void testIndexWords() {
         editor.indexWords();
         List<Integer> testList = new ArrayList<>(Arrays.asList(3, 1, 2, 3));
-        assertEquals("Wortzahl stimmt nicht überein!", testList, editor.getWordIndex().get("fox"));
+        assertEquals(errorText, testList, editor.getWordIndex().get("fox"));
     }
 
     /*
@@ -99,10 +99,17 @@ public class EditorTest {
      */
     @Test
     void testFormattedText() {
+        // standard test
         String expectedString = "The quick\nbrown fox\njumps over\nthe lazy\ndog "
                 + "The\nlazy dog\njumps over\nthe quick\nbrown fox\n"
                 + "The lazy\nfox jumps\nover the\nquick\nbrown dog ";
         assertEquals(errorText, expectedString, editor.printFormattedText("10"));
+
+        // mid-word line break test
+        expectedString = "The\nqui\n-ck\nbro\n-wn\nfox\njum\n-ps\nove\n-r\nthe\nlaz\n-y\ndog\n"
+                + "The\nlaz\n-y\ndog\njum\n-ps\nove\n-r\nthe\nqui\n-ck\nbro\n-wn\nfox\n"
+                + "The\nlaz\n-y\nfox\njum\n-ps\nove\n-r\nthe\nqui\n-ck\nbro\n-wn\ndog ";
+        assertEquals(errorText, expectedString, editor.printFormattedText("3"));
     }
 
     /*
