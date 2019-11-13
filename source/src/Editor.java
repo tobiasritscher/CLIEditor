@@ -79,16 +79,18 @@ public class Editor {
      */
     void replace() {
         boolean wrongWord;
+        boolean wrongParagraph;
         String chosenParagraph;
         OutputInput chooseParagraph;
         OutputInput oldWord;
         do {
             wrongWord = false;
+            wrongParagraph = false;
             chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
             chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
             oldWord = new OutputInput("Which word would you like to replace?");
-            if (!chosenParagraph.contains(oldWord.getInput())) {
-                System.out.println("Attention! The word you are searching does NOT exist in paragraph: " + chooseParagraph.getInput());
+            if (!chosenParagraph.contains(oldWord.getInput()) || Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > paragraphs.size()) {
+                System.out.println("Attention! Wrong paragraph or word");
                 wrongWord = true;
             }
         } while(wrongWord);
