@@ -97,7 +97,16 @@ public class Logic {
                 editor.insertParagraph(chooseParagraphNumber.getInput(), chooseNewParagraph.getInput());
                 break;
             case DELETE_PARAGRAPH:
-                OutputInput chooseParagraphToDelete = new OutputInput("Which paragraph would you like to delete?: ");
+                OutputInput chooseParagraphToDelete;
+                boolean wrongNumberedParagraph;
+                do {
+                    wrongNumberedParagraph = false;
+                    chooseParagraphToDelete = new OutputInput("Which paragraph would you like to delete?: ");
+                    if (Integer.parseInt(chooseParagraphToDelete.getInput()) < 1 || Integer.parseInt(chooseParagraphToDelete.getInput()) > Editor.paragraphs.size()){
+                        System.out.println("Wrong number! Please type a correct Paragraph number!");
+                        wrongNumberedParagraph = true;
+                    }
+                }while(wrongNumberedParagraph);
                 editor.deleteParagraph(chooseParagraphToDelete.getInput());
                 break;
             case REPLACE_WORD:

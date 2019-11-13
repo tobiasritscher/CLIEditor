@@ -77,6 +77,7 @@ public class Editor {
     public void deleteParagraph(String positionString) {
         int position = Integer.parseInt(positionString) - ARRAY_OFFSET;
         paragraphs.remove(position);
+        output.printNumberedParagraph(Editor.getParagraphs());
     }
 
     void replace(OutputInput whichParagraph, String Paragraph, String oldWord, String newWord) {
