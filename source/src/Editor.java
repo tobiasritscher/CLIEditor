@@ -122,6 +122,7 @@ public class Editor {
     }
 
     private void printIndex() {
+        int wordOccuringMoreThanOnce = 0;
         for (Map.Entry<String, List<Integer>> word : wordIndex.entrySet()) {
             String key = word.getKey();
             List<Integer> values = word.getValue();
@@ -136,6 +137,11 @@ public class Editor {
                 //Print last occurrence of word
                 System.out.println(values.get(values.size() - ARRAY_OFFSET) + "]");
             }
+        }
+
+        //Print error message if no word occurs more than once
+        if (wordOccuringMoreThanOnce == 0) {
+            System.out.println("Warning: No word in the given text occurs more than once");
         }
     }
 
