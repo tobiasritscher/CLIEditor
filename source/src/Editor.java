@@ -25,6 +25,10 @@ public class Editor {
         loremIpsum = new LoremIpsum();
     }
 
+    public static void setParagraphs(List<String> paragraphs) {
+        Editor.paragraphs = paragraphs;
+    }
+
     /**
      * geter for the paragraph List
      *
