@@ -27,14 +27,14 @@ public class Logic {
             this.chosenOptionCode = chosenOptionCode;
         }
 
-		public static ChosenOption valueOfLabel(String label) {
-			for (ChosenOption e : values()) {
-				if (e.chosenOptionCode.equals(label)) {
-					return e;
-				}
-			}
-			return WRONG_INPUT;
-		}
+        public static ChosenOption valueOfLabel(String label) {
+            for (ChosenOption e : values()) {
+                if (e.chosenOptionCode.equals(label)) {
+                    return e;
+                }
+            }
+            return WRONG_INPUT;
+        }
     }
 
     /**
@@ -72,8 +72,8 @@ public class Logic {
         boolean stopProgramm = false;
         ChosenOption chosenOption = ChosenOption.valueOfLabel(userInput);
         // switch case to choose the option
-		assert chosenOption != null;
-		switch (chosenOption) {
+        assert chosenOption != null;
+        switch (chosenOption) {
             case STOP:
                 output.printNumberedParagraph(Editor.getParagraphs());
                 stopProgramm = true;
@@ -92,30 +92,31 @@ public class Logic {
                 editor.deleteParagraph(chooseParagraphToDelete.getInput());
                 break;
             case REPLACE_WORD:
-				OutputInput chooseParagraph;
-				String chosenParagraph;
-				OutputInput oldWord;
-				boolean wrongParagraph;
-				boolean wrongWord;
-				do {
-					wrongParagraph = false;
-					chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-					if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > Editor.paragraphs.size()) {
-						System.out.println("Wrong paragraph. PLease try again");
-						wrongParagraph = true;
-					}
-				} while(wrongParagraph);
-				chosenParagraph = Editor.paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
-				do {
-					wrongWord = false;
-					oldWord = new OutputInput("Whhich word would you like to replace?");
-					if(!chosenParagraph.contains(oldWord.getInput())){
-						System.out.println("Attention! Word does not exist in this paragraph!");
-						wrongWord = true;}
-				} while(wrongWord);
-				OutputInput newWord = new OutputInput("Which is the new word?");
-				editor.replace(chooseParagraph, chosenParagraph, oldWord.getInput(), newWord.getInput());
-				break;
+                OutputInput chooseParagraph;
+                String chosenParagraph;
+                OutputInput oldWord;
+                boolean wrongParagraph;
+                boolean wrongWord;
+                do {
+                    wrongParagraph = false;
+                    chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
+                    if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > Editor.paragraphs.size()) {
+                        System.out.println("Wrong paragraph. PLease try again");
+                        wrongParagraph = true;
+                    }
+                } while (wrongParagraph);
+                chosenParagraph = Editor.paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
+                do {
+                    wrongWord = false;
+                    oldWord = new OutputInput("Whhich word would you like to replace?");
+                    if (!chosenParagraph.contains(oldWord.getInput())) {
+                        System.out.println("Attention! Word does not exist in this paragraph!");
+                        wrongWord = true;
+                    }
+                } while (wrongWord);
+                OutputInput newWord = new OutputInput("Which is the new word?");
+                editor.replace(chooseParagraph, chosenParagraph, oldWord.getInput(), newWord.getInput());
+                break;
             case INDEX_WORDS:
                 editor.indexWords();
                 break;
