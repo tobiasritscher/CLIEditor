@@ -20,10 +20,10 @@ public class EditorTest {
     void testChooseAndSetText() {
         // 1 Zeile
         ArrayList<String> testParagraph = new ArrayList<String>();
-        testParagraph.add("Lorem ipsum dolor sit ametttt");
+        testParagraph.add("Lorem ipsum dolor sit amet");
 
         editor.setParagraphs(testParagraph);
-        assertEquals("Text stimmt nicht ueberein", "Lorem ipsum dolor sit ametttt", Editor.getParagraphs().get(0));
+        assertEquals("Text stimmt nicht ueberein!", "Lorem ipsum dolor sit amet", Editor.getParagraphs().get(0));
     }
 
 
