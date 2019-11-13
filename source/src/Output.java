@@ -14,7 +14,7 @@ public class Output {
 	 * 
 	 * @param array List to print
 	 */
-	public void printNumberedParagrap(List<String> array) {
+	public void printNumberedParagraph(List<String> array) {
 		for (int i = 0; i < array.size(); i++) {
 			System.out.println((i + 1) + ": " + array.get(i));
 		}

@@ -13,7 +13,7 @@ public class Logic {
 
 	/**
 	 * main method of the programm, here it all begins
-	 * 
+	 *
 	 * @param args arguments passed to the code when exicuting the programm
 	 */
 	public static void main(String[] args) {
@@ -47,11 +47,11 @@ public class Logic {
 		// switch case to choose the option
 		switch (userInput) {
 		case "0":
-			output.printNumberedParagrap(Editor.getParagraphs());
+			output.printNumberedParagraph(Editor.getParagraphs());
 			stopProgramm = true;
 			break;
 		case "1":
-			output.printNumberedParagrap(Editor.getParagraphs());
+			output.printNumberedParagraph(Editor.getParagraphs());
 			break;
 		case "2":
 			OutputInput chooseParagraph = new OutputInput(
