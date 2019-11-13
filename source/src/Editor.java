@@ -155,7 +155,7 @@ public class Editor {
      * This method removes special characters from its input and sets it to lower-case
      * @param input the word that should be edited
      */
-    private String cleanInput(String input) {
+    String cleanInput(String input) {
         // Remove special characters attached to the word
         String word = input.replaceAll("[^a-zA-Z0-9]+", "");
         // Sets the word to lowerCase
