@@ -8,7 +8,7 @@ import java.util.Arrays;
  * This Class handels all the editing of the text
  */
 public class Editor {
-    private static List<String> paragraphs;
+    public static List<String> paragraphs;
     private static Input input;
     private static Output output;
     private static LoremIpsum loremIpsum;
@@ -77,32 +77,9 @@ public class Editor {
     /**
      * Replaces a choosen String with a new one
      */
-    void replace() {
-        boolean wrongWord ;
-        boolean wrongParagraph ;
-        String chosenParagraph;
-        OutputInput chooseParagraph;
-        OutputInput oldWord;
-        do {
-            wrongWord = false;
-            do {
-                wrongParagraph = false;
-                chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-                if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > paragraphs.size()) {
-                    System.out.println("Attention! Wrong paragraph");
-                    wrongParagraph = true;}
-                } while(wrongParagraph);
-                chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
-                oldWord = new OutputInput("Which word would you like to replace?");
-                if (!chosenParagraph.contains(oldWord.getInput())) {
-                    System.out.println("Attention! Wrong word");
-                    wrongWord = true;
-                }
-            } while (wrongWord);
-
-            OutputInput newWord = new OutputInput("Which word would you like to use instead?");
-            chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
-            paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET, chosenParagraph);
+    void replace(OutputInput whichParagraph, String Paragraph, String oldWord, String newWord) {
+        String paragraph = Paragraph.replaceFirst(oldWord, newWord);
+        paragraphs.set(Integer.parseInt(whichParagraph.getInput())-1, paragraph);
         }
 
 

@@ -75,17 +75,39 @@ public class Logic {
 			output.printNumberedParagraph(Editor.getParagraphs());
 			break;
 		case "2":
-			OutputInput chooseParagraph = new OutputInput(
+			OutputInput chooseParagraphPosition = new OutputInput(
 					"Please type the position at which you would like your paragraph to be placed at: ");
 			OutputInput chooseNewParagraph = new OutputInput("Now type the desired paragraph: ");
-			editor.insertParagraph(chooseParagraph.getInput(), chooseNewParagraph.getInput());
+			editor.insertParagraph(chooseParagraphPosition.getInput(), chooseNewParagraph.getInput());
 			break;
 		case "3":
 			OutputInput chooseParagraphToDelete = new OutputInput("Which paragraph would you like to delete?: ");
 			editor.deleteParagraph(chooseParagraphToDelete.getInput());
 			break;
 		case "4":
-			editor.replace();
+			OutputInput chooseParagraph;
+			String chosenParagraph;
+			OutputInput oldWord;
+			boolean wrongParagraph;
+			boolean wrongWord;
+			do {
+				wrongParagraph = false;
+				chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
+				if (Integer.parseInt(chooseParagraph.getInput()) < 1 || Integer.parseInt(chooseParagraph.getInput()) > Editor.paragraphs.size()) {
+					System.out.println("Wrong paragraph. PLease try again");
+					wrongParagraph = true;
+				}
+			} while(wrongParagraph);
+			chosenParagraph = Editor.paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
+			do {
+				wrongWord = false;
+				oldWord = new OutputInput("Whhich word would you like to replace?");
+				if(!chosenParagraph.contains(oldWord.getInput())){
+					System.out.println("Attention! Word does not exist in this paragraph!");
+					wrongWord = true;}
+				} while(wrongWord);
+				OutputInput newWord = new OutputInput("Which is the new word?");
+				editor.replace(chooseParagraph, chosenParagraph, oldWord.getInput(), newWord.getInput());
 			break;
 		case "5":
 			editor.indexWords();
