@@ -83,8 +83,14 @@ public class Editor {
     public void indexWords() {
         System.out.println("Total number of paragraphs: " + paragraphs.size());
         System.out.println("*******************************");
+        indexInParagraph();
+        printIndex();
+    }
 
-
+    /*
+    This method saves in which paragraph a given word occurs
+     */
+    private void indexInParagraph() {
         for (int i = 0; i < paragraphs.size(); i++) {
             String[] words = paragraphs.get(i).split(" ");
 
@@ -94,7 +100,7 @@ public class Editor {
 
                 if (wordIndex.get(word) == null) {
                     wordIndex.put(word, new ArrayList<>());
-    				
+
     				/*
     				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
     				Hier wird es initialisiert.
@@ -113,11 +119,6 @@ public class Editor {
                 }
             }
         }
-        printIndex();
-    }
-
-    private void indexInParagraph() {
-        //TODO: Speichert in welchem Paragraph sich das gesuchte Wort befindet
     }
 
 
