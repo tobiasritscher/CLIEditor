@@ -1,6 +1,6 @@
 # gruppe103-CaffeineAddicts-projekt2-editor
 
-# Project Title
+# Text Editor
 
 Terminal Text Editor
 
@@ -22,7 +22,7 @@ Bearbeitungsmöglichkeiten für ihren Text:
 
 3: Delete paragraph - Sie können einen Paragraphen an der von Ihnen gewünschten Stelle löschen.
 
-4: Replace - Ein Wort suchen und ersetzten.
+4: Replace - Ein Wort suchen und dieses durch ein anderes Wort ersetzten.
 
 5: Index Words - Gibt eine Liste mit allen Worten, welche mindestens zwei mal vorkommen, zurück. Inklusive Paragraphen Nummer.
 
@@ -30,11 +30,11 @@ Bearbeitungsmöglichkeiten für ihren Text:
 
 ## Team
 
-* **Pascal Witzig** - Head of Development Input and Output aka Assistant Caffeine Addict
+* **Pascal Witzig** - Head of Development of Wordindexing aka Assistant Caffeine Addict
 
-* **Oliver Corrodi** - Director of Language Department aka Chief Caffeine and Nicotine Addict
+* **Oliver Corrodi** - Director of Code testing aka Chief Caffeine and Nicotine Addict
 
-* **Erman Zankov** - First Executive Programmer specialized in Matchfields aka Longboi
+* **Erman Zankov** - First Executive Programmer specialized in replace, insert, delete and numbering paragraphs aka Longboi
 
 * **Tobias Ritscher** - Senior Software Engineer in Logic Departement aka Diseased Penguin
 
