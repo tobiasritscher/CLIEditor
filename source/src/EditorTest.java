@@ -23,7 +23,7 @@ public class EditorTest {
         testParagraph.add("Lorem ipsum dolor sit amet");
 
         editor.setParagraphs(testParagraph);
-        assertEquals("Text stimmt nicht ueberein", "Lorem ipsum dolor sit amet", Editor.getParagraphs().get(0));
+        assertEquals("Text stimmt nicht ueberein!", "Lorem ipsum dolor sit amet", Editor.getParagraphs().get(0));
     }
 
 
