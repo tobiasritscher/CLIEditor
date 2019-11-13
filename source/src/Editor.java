@@ -74,7 +74,7 @@ public class Editor {
     }
 
     /**
-     * replaces a choosen String with a new one
+     * Replaces a choosen String with a new one
      */
     public void replace() {
         //TODO: keyword suchen und ersetzen
@@ -104,33 +104,39 @@ public class Editor {
             String[] words = paragraphs.get(i).split(" ");
 
             for (String word : words) {
-                //Removing special characters and setting the word to lowercase
+                // Removes special characters and sets the word to lowercase
                 String cleanedWord = cleanInput(word);
 
                 if (wordIndex.get(cleanedWord) == null) {
                     wordIndex.put(cleanedWord, new ArrayList<>());
 
     				/*
-    				Das erste Element des Arrays zählt die Häufigkeit des Wortes.
-    				Hier wird es initialisiert.
+    				The first element of the array counts the words frequency;
+    				Here it gets initialized.
     				*/
                     wordIndex.get(cleanedWord).add(1);
 
-                    // Das zweite Element des Arrays gibt an, in welchem Paragraph das Wort zum ersten Mal auftritt
+                    // The second element of the array indicates in which paragraph the word appears for the first time
                     wordIndex.get(cleanedWord).add(i + 1);
 
-                } else {
-                    //wordIndex.put(word,wordFrequency + 1);
+                }
+                // If the word has already appeared once
+                else {
+                    // Increases the word-frequency counter +1
                     wordIndex.get(cleanedWord).set(0, wordIndex.get(cleanedWord).get(0) + 1);
 
-                    //Fügt hinzu, in welchem Paragraphen das Wort noch auftritt
+                    // Adds other paragraphs to the Map in which the word occurs
                     wordIndex.get(cleanedWord).add(i + 1);
                 }
             }
         }
     }
 
-    public String cleanInput(String input) {
+    /*
+     * This method removes special characters from its input and sets it to lower-case
+     * @param input the word that should be edited
+     */
+    private String cleanInput(String input) {
 
         String word = input.replaceAll("[^a-zA-Z0-9]+", "");
         word = word.toLowerCase();
@@ -159,7 +165,7 @@ public class Editor {
         }
 
         //Print error message if no word occurs more than once
-        if (wordOccursMoreThanOnce == false) {
+        if (!wordOccursMoreThanOnce) {
             System.out.println("Warning: No word in the given text occurs more than once");
         }
     }
