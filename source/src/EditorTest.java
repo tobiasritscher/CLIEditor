@@ -83,7 +83,7 @@ public class EditorTest {
     void testIndexWords() {
         editor.indexWords();
         List<Integer> testList = new ArrayList<>(Arrays.asList(3, 1, 2, 3));
-        assertEquals(errorText, testList, editor.getWordIndex().get("fox"));
+        assertEquals(errorText, testList, Editor.getWordIndex().get("fox"));
     }
 
     /*
