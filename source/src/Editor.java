@@ -73,17 +73,30 @@ public class Editor {
         paragraphs.remove(position);
     }
 
+
     /**
      * Replaces a choosen String with a new one
      */
     public void replace() {
-        //TODO: keyword suchen und ersetzen
-        OutputInput chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
-        OutputInput oldWord = new OutputInput("Which word would you like to replace?");
-        OutputInput newWord = new OutputInput("Which word would you like to use instead?");
-        String chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - 1);
-        chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
-        paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - 1, chosenParagraph);
+        boolean wrongWord;
+        String chosenParagraph;
+        OutputInput chooseParagraph;
+        OutputInput oldWord;
+        do {
+            wrongWord = false;
+            chooseParagraph = new OutputInput("In which paragraph would you like to replace a word?");
+            chosenParagraph = paragraphs.get(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET);
+            oldWord = new OutputInput("Which word would you like to replace?");
+            if (!chosenParagraph.contains(oldWord.getInput())) {
+                System.out.println("Attention! The word you are searching does NOT exist in paragraph: " + chooseParagraph.getInput());
+                wrongWord = true;
+            }
+        } while(wrongWord);
+
+            OutputInput newWord = new OutputInput("Which word would you like to use instead?");
+            chosenParagraph = chosenParagraph.replaceFirst(oldWord.getInput(), newWord.getInput());
+            paragraphs.set(Integer.parseInt(chooseParagraph.getInput()) - ARRAY_OFFSET, chosenParagraph);
+
     }
 
     /**
