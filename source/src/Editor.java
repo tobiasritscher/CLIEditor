@@ -233,5 +233,69 @@ public class Editor {
         }
         return wordsBuilder.toString();
     }
+
+    private int key(String key){
+        int total = 0;
+        int [] letters = new int[key.length()];
+        for(int i = 0; i < key.length(); ++i){
+            letters[i] = (int) key.charAt(i);
+        }
+        for(int n : letters){
+            total += n;
+        }
+        return total;
+    }
+
+    //Tobi tuen die Methode i de switch cases zum teste
+    public void encrypt(){
+        OutputInput key = new OutputInput("What should the key for encryption be?");
+        ArrayList<Integer> total = new ArrayList<>();
+        for(int i = 0; i < paragraphs.size(); ++i){
+            total.addAll(ParagraphtoASCII(i));
+        }
+        for(int i = 0; i < total.size(); ++i){
+            total.set(i, total.get(i) + key(key.getInput()));
+        }
+        System.out.println(total);
+    }
+
+    private ArrayList<Integer> ParagraphtoASCII(int i){
+        ArrayList<Integer>  ascii = new ArrayList<>();
+        String[] words;
+        words = paragraphs.get(i).split(" ");
+        for(int k = 0; k < words.length; ++k){
+            words[k] = words[k].concat("/");
+        }
+        for(int j = 0; j < words.length; ++j){
+            for(int n = 0; n < words[j].length(); ++n){
+               ascii.add((int) words[j].charAt(n));
+            }
+        }
+        return ascii;
+    }
+    // Die da bitte au ine tue
+    public void decrypt (){
+        OutputInput key = new OutputInput("Please give the key required for decryption");
+        OutputInput text = new OutputInput("Please give the encrypted text with each number separated by a coma.");
+        String[] NumbersasString = new String[text.getInput().length()];
+        NumbersasString = text.getInput().split(",");
+        int[] numbers = new int[NumbersasString.length];
+        for(int i = 0; i < NumbersasString.length; ++i){
+            numbers[i] = Integer.parseInt(NumbersasString[i]);
+        }
+        for(int i = 0; i < numbers.length; ++i){
+            numbers[i] = numbers[i] - key(key.getInput());
+        }
+        char[] chars = new char[numbers.length];
+        for(int i = 0; i < numbers.length; ++i){
+            chars[i] = (char) numbers[i];
+        }
+       String words = "";
+        for(int i = 0; i < chars.length; ++i){
+            words += chars[i];
+        }
+        String[] sentences = words.split("/");
+        System.out.println(sentences);
+    }
+
 }
- 
