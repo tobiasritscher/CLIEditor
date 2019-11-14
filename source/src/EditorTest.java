@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Unit testing class for Editor.java.
+ * Unit testing class for Editor.java. This also covers all of the functionality of the Output class.
  *
  * @author Oliver
  * @version 1.0
@@ -38,13 +38,19 @@ public class EditorTest {
     }
 
     /*
-    Checks whether paragraphs in Editor class are filled properly and in correct order.
+    Checks whether paragraphs in Editor class are filled properly and in correct order, and if the
+    standard LoremIpsum text was filled properly instead of own text.
      */
     @Test
     void testChooseAndSetText() {
+        // Paragraph list test
         assertEquals(errorText, test1, Editor.getParagraphs().get(0));
         assertEquals(errorText, test2, Editor.getParagraphs().get(1));
         assertEquals(errorText, test3, Editor.getParagraphs().get(2));
+
+        // LoremIpsum test
+        LoremIpsum loremIpsum = new LoremIpsum();
+        assertEquals(errorText, loremIpsum.getTextArray(), editor.chooseAndSetText("n"));
     }
 
     /*

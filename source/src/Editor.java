@@ -48,13 +48,14 @@ public class Editor {
      *
      * @param userInput String to decide wich text to use
      */
-    public void chooseAndSetText(String userInput) {
+    public List<String> chooseAndSetText(String userInput) {
         if (userInput.equalsIgnoreCase("Y")) {
             output.print("Please insert your text. At the end of your text switch to a new line and write 'END':");
             paragraphs = input.readInput();
         } else {
             paragraphs = loremIpsum.getTextArray();
         }
+        return paragraphs;
     }
 
     /**
