@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * This class handels all the inputs of the programm
+ * This class handles all the inputs of the program
  */
 public class Input {
     private Scanner scanner;
@@ -15,9 +15,9 @@ public class Input {
     }
 
     /**
-     * reads the input of the user and saves it in an ArrayList spiltted by '\n'
+     * Reads the input of the user and saves it in an ArrayList split by new line ('\n')
      *
-     * @return ArrayList with the splitted text
+     * @return ArrayList with the split text
      */
     public List<String> readInput() {
         scanner = new Scanner(System.in);
@@ -32,9 +32,9 @@ public class Input {
     }
 
     /**
-     * reads a String from the user input
+     * Reads string from the user input
      *
-     * @return String
+     * @return String read by the scanner
      */
     public String stringIn() {
         scanner = new Scanner(System.in);

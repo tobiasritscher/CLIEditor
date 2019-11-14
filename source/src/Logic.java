@@ -1,13 +1,12 @@
 /**
- * This class calls the right method from the editor and is the start of the
- * programm
+ * This class calls the right method from the editor and is entry point of the program
  */
 public class Logic {
     private static Editor editor;
     private static Output output;
 
     /**
-     * constructor of the class Logic
+     * Constructor of the class Logic
      */
     public Logic() {
         editor = new Editor();
@@ -41,9 +40,9 @@ public class Logic {
     }
 
     /**
-     * main method of the programm, here it all begins
+     * main method of the program, here it all begins
      *
-     * @param args arguments passed to the code when exicuting the programm
+     * @param args arguments passed to the code when executing the program
      */
     public static void main(String[] args) {
         Logic logic = new Logic();
@@ -63,8 +62,8 @@ public class Logic {
 
     private void printOptions() {
         String[] options = {"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
-                "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph", "5: Index Words",
-                "6: Print formated text"};
+                "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph",
+                "5: Index of words being used", "6: Print formatted text"};
         // print all the options
         for (String s : options) {
             output.print(s);

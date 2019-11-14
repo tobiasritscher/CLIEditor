@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This class handels the text constant to use for the programm
+ * This class handles the text constant to use for the programm
  */
 public class LoremIpsum {
     private static final String TEXT_LOREM_ISPUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum in risus et feugiat. Maecenas tempus volutpat luctus. Quisque a feugiat nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam laoreet aliquam risus, feugiat feugiat erat vestibulum vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt nec leo sed placerat. Fusce quis finibus elit, sed mollis mauris.\n"
@@ -24,7 +24,7 @@ public class LoremIpsum {
     }
 
     /**
-     * get methode for the constant text
+     * Getter method for the constant text
      *
      * @return ArrayList with the Lorem Ipsum text splitted by '\n'
      */

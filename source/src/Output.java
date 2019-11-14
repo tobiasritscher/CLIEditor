@@ -4,13 +4,13 @@ import java.util.List;
 public class Output {
 
     /**
-     * handels all print methodes from the programm
+     * Handles all print methods used in the program
      */
     public Output() {
     }
 
     /**
-     * prints the text sorted by paragraphs and numbered in the console
+     * Prints the text sorted by paragraphs and numbers it accordingly
      *
      * @param array List to print
      */
@@ -21,9 +21,9 @@ public class Output {
     }
 
     /**
-     * prints a String in the console
+     * Prints a string to the console
      *
-     * @param string a String to print
+     * @param string a string to print
      */
     public void print(String string) {
         System.out.println(string);

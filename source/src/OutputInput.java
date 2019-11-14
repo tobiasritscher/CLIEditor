@@ -1,5 +1,5 @@
 /**
- * connects the the input to the right output
+ * Connects the the input to the correct output
  */
 public class OutputInput {
     private String input;

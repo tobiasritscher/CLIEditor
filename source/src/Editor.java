@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import java.util.Arrays;
 
 /**
- * This Class handels all the editing of the text
+ * This Class handles all the editing of the text
  */
 public class Editor {
     private static List<String> paragraphs;
@@ -26,7 +26,7 @@ public class Editor {
     }
 
     /**
-     * seter for Paragraphs List
+     * Setter method for Paragraphs List
      *
      * @param paragraphs List<String>
      */
@@ -35,7 +35,7 @@ public class Editor {
     }
 
     /**
-     * geter for the paragraph List
+     * Getter method for the paragraph List
      *
      * @return all paragraphs as an list
      */
@@ -59,9 +59,9 @@ public class Editor {
     }
 
     /**
-     * inserts a choosen paragraph at a choosen position
+     * Inserts a paragraph at a chosen position
      *
-     * @param positionString position of the new paragrpah as String
+     * @param positionString position of the new paragraph as String
      * @param newParagraph   paragraph to set as String
      */
     public void insertParagraph(String positionString, String newParagraph) {
@@ -71,9 +71,9 @@ public class Editor {
     }
 
     /**
-     * delets a pragraph at the choosen position
+     * Deletes a paragraph at the chosen position
      *
-     * @param positionString position of the paragraph to delete as String
+     * @param positionString position of the paragraph to delete as a string
      */
     public void deleteParagraph(String positionString) {
         int position = Integer.parseInt(positionString) - ARRAY_OFFSET;
@@ -89,7 +89,7 @@ public class Editor {
     }
 
     public void indexWords() {
-        // prints an index of all words with the number of occurence and where to find them
+        // prints an index of all words with the number of occurrence and where to find them
         output.print("Total number of paragraphs: " + paragraphs.size());
         output.print("*******************************");
         indexInParagraph();
@@ -159,9 +159,10 @@ public class Editor {
     }
 
     /**
-     * This method formats the text with a chosen length of the paragraph
+     * This method formats the whole text with a chosen length. Line breaks are inserted where
+     * the row length is exceeded.
      *
-     * @param lengthInput int > 0 for the maxLength of the paragraph
+     * @param lengthInput int > 0 for the maximum length of the paragraph
      */
     public String printFormattedText(String lengthInput) {
         final int COUNT_SPACES = 1;
