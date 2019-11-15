@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class Encryption {
     private Editor editor;
 
-    public Encryption(){
+    public Encryption() {
         editor = new Editor();
     }
 
@@ -27,7 +27,7 @@ public class Encryption {
      * Uses our very own encryption algorythm to encrypt your text into an Array of ints
      *
      * @param inputKey the key which is used to encryption and later decryption
-     * @return
+     * @return ArrayList with encrypted message
      */
     public ArrayList<Integer> encrypt(String inputKey) {
         ArrayList<Integer> total = new ArrayList<>();
@@ -64,11 +64,13 @@ public class Encryption {
 
     /**
      * Used to decrypt your message
-     *  @param key the String used to decrypt the message (the same key you used to encrypt your message)
+     *
+     * @param key  the String used to decrypt the message (the same key you used to encrypt your message)
      * @param text the encrypted message coma separated
-     * @return
+     * @return String with decrypted message
      */
     public String decrypt(String key, String text) {
+        String[] sentences;
         String[] numbersAsString;
         StringBuilder words = new StringBuilder();
 
@@ -92,8 +94,9 @@ public class Encryption {
             words.append(aChar);
         }
 
-        String[] sentences = words.toString().split("/");
+        sentences = words.toString().split("/");
         System.out.println(editor.listToString(Arrays.asList(sentences)));
+
         return editor.listToString(Arrays.asList(sentences));
     }
 
