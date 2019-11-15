@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class Input {
     private Scanner scanner;
+    private final static int ARRAY_OFFSET = 1;
 
     /**
      * Constructor of the class Input
@@ -24,9 +25,9 @@ public class Input {
         ArrayList<String> splitText = new ArrayList<>();
         do {
             splitText.add(scanner.nextLine());
-        } while (!splitText.get(splitText.size() - 1).equalsIgnoreCase("END") && scanner.hasNextLine());
+        } while (!splitText.get(splitText.size() - ARRAY_OFFSET).equalsIgnoreCase("END") && scanner.hasNextLine());
 
-        splitText.remove(splitText.size() - 1);
+        splitText.remove(splitText.size() - ARRAY_OFFSET);
 
         return splitText;
     }
