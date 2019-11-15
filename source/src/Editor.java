@@ -297,14 +297,14 @@ public class Editor {
      * @param text
      */
     public void decrypt(String key, String text) {
-        String[] NumbersasString;
+        String[] numbersAsString;
         StringBuilder words = new StringBuilder();
 
-        NumbersasString = text.split(",");
-        int[] numbers = new int[NumbersasString.length];
+        numbersAsString = text.split(", ");
+        int[] numbers = new int[numbersAsString.length];
 
-        for (int i = 0; i < NumbersasString.length; ++i) {
-            numbers[i] = Integer.parseInt(NumbersasString[i]);
+        for (int i = 0; i < numbersAsString.length; ++i) {
+            numbers[i] = Integer.parseInt(numbersAsString[i]);
         }
 
         for (int i = 0; i < numbers.length; ++i) {
@@ -321,7 +321,7 @@ public class Editor {
         }
 
         String[] sentences = words.toString().split("/");
-        output.print(Arrays.toString(sentences));
+        output.print(listToString(Arrays.asList(sentences)));
     }
 
 }
