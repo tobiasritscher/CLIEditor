@@ -103,9 +103,10 @@ public class Logic {
                 boolean wrongNumber;
                 do {
                     wrongNumber = false;
-                    chooseParagraphNumber = new OutputInput(
-                            "Please type the position at which you would like your paragraph to be placed at [1, " + Editor.getParagraphs().size() + "]: ");
-                    if (Integer.parseInt(chooseParagraphNumber.getInput()) < 1 || Integer.parseInt(chooseParagraphNumber.getInput()) > Editor.getParagraphs().size()) {
+                    chooseParagraphNumber = new OutputInput("Please type the position at which you would like your paragraph to be placed at [1, "
+                                    + Editor.getParagraphs().size() + "]: ");
+                    int insertParagraphNumber = Integer.parseInt(chooseParagraphNumber.getInput());
+                    if (insertParagraphNumber < 1 || insertParagraphNumber > Editor.getParagraphs().size()) {
                         output.print("Wrong paragraph selected. Try again");
                         wrongNumber = true;
                     }
