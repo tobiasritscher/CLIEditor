@@ -45,7 +45,3 @@ This project is licensed under the ZHAW License - see [ZHAW](http://www.zhaw.ch)
 ## Class Diagram
 
 ![Flowchart](Klassendiagramm.gif)
-
-## Screenshot
-
-[Screenshot]()
