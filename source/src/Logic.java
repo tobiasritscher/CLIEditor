@@ -4,6 +4,7 @@
 public class Logic {
     private static Editor editor;
     private static Output output;
+    private static Encryption encryption;
 
     /**
      * Constructor of the class Logic
@@ -11,6 +12,7 @@ public class Logic {
     public Logic() {
         editor = new Editor();
         output = new Output();
+        encryption = new Encryption();
     }
 
     public enum ChosenOption {
@@ -159,13 +161,13 @@ public class Logic {
 
             case ENCRYPT:
                 OutputInput encryptKey = new OutputInput("What should the key for encryption be?: ");
-                Encryption.encrypt(encryptKey.getInput());
+                encryption.encrypt(encryptKey.getInput());
                 break;
 
             case DECRYPT:
                 OutputInput decryptKey = new OutputInput("Please give the key required for decryption");
                 OutputInput text = new OutputInput("Please give the encrypted text with each number separated by a coma.");
-                Encryption.decrypt(decryptKey.getInput(), text.getInput());
+                encryption.decrypt(decryptKey.getInput(), text.getInput());
                 break;
 
             default:

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Encryption {
+    private Editor editor;
 
-    Editor editor;
     public Encryption(){
         editor = new Editor();
     }
@@ -31,7 +31,7 @@ public class Encryption {
     public void encrypt(String inputKey) {
         ArrayList<Integer> total = new ArrayList<>();
 
-        for (int i = 0; i < paragraphs.size(); ++i) {
+        for (int i = 0; i < Editor.getParagraphs().size(); ++i) {
             total.addAll(paragraphtoASCII(i));
         }
 
@@ -46,7 +46,7 @@ public class Encryption {
         ArrayList<Integer> ascii = new ArrayList<>();
         String[] words;
 
-        words = paragraphs.get(i).split(" ");
+        words = Editor.getParagraphs().get(i).split(" ");
 
         for (int k = 0; k < words.length; ++k) {
             words[k] = words[k].concat("/");
@@ -91,7 +91,7 @@ public class Encryption {
         }
 
         String[] sentences = words.toString().split("/");
-        output.print(listToString(Arrays.asList(sentences)));
+        System.out.println(editor.listToString(Arrays.asList(sentences)));
     }
 
 
