@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 /**
  * This Class handles all the editing of the text
+ *
+ * @author ritsctob, zankoerm, witzipa1, corrooli
+ * @version 1.0
  */
 public class Editor {
     private static List<String> paragraphs;

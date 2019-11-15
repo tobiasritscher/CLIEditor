@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Unit testing class for Editor.java. This also covers all of the functionality of the Output class.
  *
- * @author Oliver
+ * @author corrooli
  * @version 1.0
  */
 

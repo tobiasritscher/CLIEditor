@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 /**
  * This class handles all the inputs of the program
+ *
+ * @author ritsctob
+ * @version 1.0
  */
 public class Input {
     private Scanner scanner;

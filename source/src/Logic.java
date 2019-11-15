@@ -1,5 +1,8 @@
 /**
  * This class calls the right method from the editor and is entry point of the program
+ *
+ * @author ritsctob
+ * @version 1.0
  */
 public class Logic {
     private static Editor editor;

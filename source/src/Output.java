@@ -1,11 +1,13 @@
-
 import java.util.List;
 
+/**
+ * Handles all print methods used in the program
+ *
+ * @author ritsctob
+ * @version 1.0
+ */
 public class Output {
 
-    /**
-     * Handles all print methods used in the program
-     */
     public Output() {
     }
 

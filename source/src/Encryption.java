@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//Handels the en- and decrypting methods
+/**
+ * This class handles encryption and decryption of the text
+ *
+ * @author zankoerm
+ * @version 1.0
+ */
 public class Encryption {
     private Editor editor;
 

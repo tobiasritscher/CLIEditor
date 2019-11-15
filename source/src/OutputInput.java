@@ -1,5 +1,8 @@
 /**
  * Connects the the input to the correct output
+ *
+ * @author ritsctob
+ * @version 1.0
  */
 public class OutputInput {
     private String input;

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Unit testing class for Encryption.java.
  *
- * @author Oliver
+ * @author corrooli
  * @version 1.0
  */
 class EncryptionTest {
