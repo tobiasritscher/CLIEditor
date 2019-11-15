@@ -5,7 +5,6 @@ public class Logic {
     private static Editor editor;
     private static Output output;
     private static Encryption encryption;
-    private final String[] options;
 
     /**
      * Constructor of the class Logic
@@ -14,30 +13,32 @@ public class Logic {
         editor = new Editor();
         output = new Output();
         encryption = new Encryption();
-        options = new String[]{"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
-                "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph",
-                "5: Index of words being used", "6: Print formatted text", "7: Encrypt a text", "8: Decrypt a text"};
     }
 
+    /**
+     * Enum for all the options to edit the text
+     */
     public enum ChosenOption {
-        STOP("0"),
-        PRINT_PARAGRAPHS("1"),
-        INSERT_PARAGRAPH("2"),
-        DELETE_PARAGRAPH("3"),
-        REPLACE_WORD("4"),
-        INDEX_WORDS("5"),
-        PRINT_FORMATED_TEXT("6"),
-        ENCRYPT("7"),
-        DECRYPT("8"),
-        WRONG_INPUT("ERROR");
+        STOP("0", "Exit the programm (also prints the final text)"),
+        PRINT_PARAGRAPHS("1", "Print paragraphs"),
+        INSERT_PARAGRAPH("2", "Insert paragraph"),
+        DELETE_PARAGRAPH("3", "Delete paragraph"),
+        REPLACE_WORD("4", "Replace a word in a paragraph"),
+        INDEX_WORDS("5", "Index of words being used"),
+        PRINT_FORMATED_TEXT("6", "Print formatted text"),
+        ENCRYPT("7", "Encrypt a text"),
+        DECRYPT("8", "Decrypt a text"),
+        WRONG_INPUT("ERROR", "");
 
         private final String chosenOptionCode;
+        private final String textForUser;
 
-        ChosenOption(String chosenOptionCode) {
+        ChosenOption(String chosenOptionCode, String textForUser) {
             this.chosenOptionCode = chosenOptionCode;
+            this.textForUser = textForUser;
         }
 
-        public static ChosenOption valueOfLabel(String label) {
+        public static ChosenOption codeOfOption(String label) {
             for (ChosenOption value : values()) {
                 if (value.chosenOptionCode.equals(label)) {
                     return value;
@@ -63,21 +64,24 @@ public class Logic {
             logic.printOptions();
 
             OutputInput chooseOption = new OutputInput(
-                    "What do you want to do with your text? (Just write the number [0," + (logic.options.length - 1) + "]): ");
+                    "What do you want to do with your text? (Just write the number [0," + (ChosenOption.values().length - 2) + "]): ");
             stopProgramm = logic.callEditingOption(chooseOption.getInput());
         } while (!stopProgramm);
     }
 
     private void printOptions() {
-        // print all the options
-        for (String s : options) {
-            output.print(s);
+        // print all the options without the last one (error)
+        ChosenOption[] values = ChosenOption.values();
+        for (int i = 0, valuesLength = values.length; i < valuesLength - 1; i++) {
+            ChosenOption chosenOption = values[i];
+            output.print(chosenOption.chosenOptionCode + ": " + chosenOption.textForUser);
         }
+        output.print("");
     }
 
     private boolean callEditingOption(String userInput) {
         boolean stopProgramm = false;
-        ChosenOption chosenOption = ChosenOption.valueOfLabel(userInput);
+        ChosenOption chosenOption = ChosenOption.codeOfOption(userInput);
         // switch case to choose the option
         assert chosenOption != null;
         switch (chosenOption) {
