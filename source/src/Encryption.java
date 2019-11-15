@@ -27,8 +27,9 @@ public class Encryption {
      * Uses our very own encryption algorythm to encrypt your text into an Array of ints
      *
      * @param inputKey the key which is used to encryption and later decryption
+     * @return
      */
-    public void encrypt(String inputKey) {
+    public ArrayList<Integer> encrypt(String inputKey) {
         ArrayList<Integer> total = new ArrayList<>();
 
         for (int i = 0; i < Editor.getParagraphs().size(); ++i) {
@@ -40,6 +41,7 @@ public class Encryption {
         }
 
         System.out.println(total);
+        return total;
     }
 
     private ArrayList<Integer> paragraphtoASCII(int i) {
@@ -62,11 +64,11 @@ public class Encryption {
 
     /**
      * Used to decrypt your message
-     *
-     * @param key the String used to decrypt the message (the same key you used to encrypt your message)
+     *  @param key the String used to decrypt the message (the same key you used to encrypt your message)
      * @param text the encrypted message coma separated
+     * @return
      */
-    public void decrypt(String key, String text) {
+    public String decrypt(String key, String text) {
         String[] numbersAsString;
         StringBuilder words = new StringBuilder();
 
@@ -92,6 +94,7 @@ public class Encryption {
 
         String[] sentences = words.toString().split("/");
         System.out.println(editor.listToString(Arrays.asList(sentences)));
+        return editor.listToString(Arrays.asList(sentences));
     }
 
 
