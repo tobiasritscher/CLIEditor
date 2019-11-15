@@ -290,7 +290,12 @@ public class Editor {
         return ascii;
     }
 
-
+    /**
+     * TODO Javadoc
+     *
+     * @param key
+     * @param text
+     */
     public void decrypt(String key, String text) {
         String[] NumbersasString;
         StringBuilder words = new StringBuilder();
