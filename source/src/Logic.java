@@ -104,7 +104,7 @@ public class Logic {
                 do {
                     wrongNumber = false;
                     chooseParagraphNumber = new OutputInput("Please type the position at which you would like your paragraph to be placed at [1, "
-                                    + Editor.getParagraphs().size() + "]: ");
+                            + Editor.getParagraphs().size() + "]: ");
                     int insertParagraphNumber = Integer.parseInt(chooseParagraphNumber.getInput());
                     if (insertParagraphNumber < 1 || insertParagraphNumber > Editor.getParagraphs().size()) {
                         output.print("Wrong paragraph selected. Try again");
@@ -118,12 +118,13 @@ public class Logic {
             case DELETE_PARAGRAPH:
                 OutputInput chooseParagraphToDelete;
                 boolean wrongNumberedParagraph;
+                int chosenParagraphDelete;
 
                 do {
                     wrongNumberedParagraph = false;
                     chooseParagraphToDelete =
                             new OutputInput("Which paragraph would you like to delete? [1, " + Editor.getParagraphs().size() + "]: ");
-                    int chosenParagraphDelete = Integer.parseInt(chooseParagraphToDelete.getInput());
+                    chosenParagraphDelete = Integer.parseInt(chooseParagraphToDelete.getInput());
 
                     if (chosenParagraphDelete < 1 || chosenParagraphDelete > Editor.getParagraphs().size()) {
                         output.print("Wrong number! Please type a correct Paragraph number!");
