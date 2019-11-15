@@ -254,9 +254,9 @@ public class Editor {
     }
 
     /**
-     * TODO Javadoc
+     * Uses our very own encryption algorythm to encrypt your text into an Array of ints
      *
-     * @param inputKey
+     * @param inputKey the key which is used to encryption and later decryption
      */
     public void encrypt(String inputKey) {
         ArrayList<Integer> total = new ArrayList<>();
@@ -291,10 +291,10 @@ public class Editor {
     }
 
     /**
-     * TODO Javadoc
+     * Used to decrypt your message
      *
-     * @param key
-     * @param text
+     * @param key the String used to decrypt the message (the same key you used to encrypt your message)
+     * @param text the encrypted message coma separated
      */
     public void decrypt(String key, String text) {
         String[] numbersAsString;
