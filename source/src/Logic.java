@@ -5,6 +5,7 @@ public class Logic {
     private static Editor editor;
     private static Output output;
     private static Encryption encryption;
+    private final String[] options;
 
     /**
      * Constructor of the class Logic
@@ -13,6 +14,9 @@ public class Logic {
         editor = new Editor();
         output = new Output();
         encryption = new Encryption();
+        options = new String[]{"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
+                "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph",
+                "5: Index of words being used", "6: Print formatted text", "7: Encrypt a text", "8: Decrypt a text"};
     }
 
     public enum ChosenOption {
@@ -59,15 +63,12 @@ public class Logic {
             logic.printOptions();
 
             OutputInput chooseOption = new OutputInput(
-                    "What do you want to do with your text? (Just write the number [0,6]): ");
+                    "What do you want to do with your text? (Just write the number [0," + (logic.options.length - 1) + "]): ");
             stopProgramm = logic.callEditingOption(chooseOption.getInput());
         } while (!stopProgramm);
     }
 
     private void printOptions() {
-        final String[] options = {"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
-                "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph",
-                "5: Index of words being used", "6: Print formatted text", "7: Encrypt a text", "8: Decrypt a text"};
         // print all the options
         for (String s : options) {
             output.print(s);
