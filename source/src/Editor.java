@@ -140,11 +140,11 @@ public class Editor {
 
             //Print only if the word occurs more than once
             if (values.get(0) > 1) {
-                System.out.print("'" + key + "'");
-                System.out.print(" exists " + values.get(0) + " times in paragraphs [");
+                output.print("'" + key + "'");
+                output.print(" exists " + values.get(0) + " times in paragraphs [");
 
                 for (int i = 1; i < values.size() - ARRAY_OFFSET; i++) {
-                    System.out.print(values.get(i) + ", ");
+                    output.print(values.get(i) + ", ");
                 }
 
                 output.print(values.get(values.size() - ARRAY_OFFSET) + "]");
@@ -159,7 +159,7 @@ public class Editor {
     }
 
     /**
-     * This method formats the whole text with a chosen length. Line breaks are inserted where
+     * This method formats and prints the whole text with a chosen length. Line breaks are inserted where
      * the row length is exceeded.
      *
      * @param lengthInput int > 0 for the maximum length of the paragraph
@@ -171,32 +171,36 @@ public class Editor {
         StringBuilder text = new StringBuilder();
         int paragraphLength = 0;
 
-        for (String s : wordList) {
+        for (String word : wordList) {
 
             if (paragraphLength >= maxLength) {
                 text.append("\n");
                 paragraphLength = 0;
             }
+
             // if word fits into line -> put it there
-            if (paragraphLength + s.length() <= maxLength) {
-                text.append(s);
+            if (paragraphLength + word.length() <= maxLength) {
+                text.append(word);
                 text.append(" ");
-                paragraphLength += s.length() + COUNT_SPACES;
+                paragraphLength += word.length() + COUNT_SPACES;
+
                 // if word doesn't fit into line -> put it on next line
-            } else if (paragraphLength + s.length() > maxLength && s.length() <= maxLength) {
+            } else if (paragraphLength + word.length() > maxLength && word.length() <= maxLength) {
                 text.append("\n");
-                text.append(s);
+                text.append(word);
                 text.append(" ");
-                paragraphLength = s.length() + COUNT_SPACES;
+                paragraphLength = word.length() + COUNT_SPACES;
+
                 // if word is longer then maxlength -> put it on several lines parted by "-"
-            } else if (s.length() > maxLength) {
-                int paragraphLengthCache = paragraphLength;
+            } else if (word.length() > maxLength) {
+                int paragraphLengthCache = paragraphLength; //save the value to edit it only in this scope
                 int counter = 0;
                 int startOfSubstring = 0;
-                int lengthOfWord = s.length();
+                int lengthOfWord = word.length();
+
                 do {
                     int endOfSubstring = startOfSubstring + maxLength - paragraphLengthCache;
-                    text.append(s, startOfSubstring, endOfSubstring);
+                    text.append(word, startOfSubstring, endOfSubstring);
                     text.append("\n-");
 
                     counter++;
@@ -205,10 +209,10 @@ public class Editor {
                     startOfSubstring = endOfSubstring;
                 } while (lengthOfWord > maxLength);
 
-                text.append(s.substring(counter * maxLength - paragraphLength));
+                text.append(word.substring(counter * maxLength - paragraphLength));
                 text.append(" ");
 
-                paragraphLength = s.length() + COUNT_SPACES + paragraphLength - counter * maxLength;
+                paragraphLength = word.length() + COUNT_SPACES + paragraphLength - counter * maxLength;
             }
         }
         output.print(text.toString().replaceAll(" \n", "\n"));
@@ -224,78 +228,95 @@ public class Editor {
     String listToString(List<String> text) {
         StringBuilder wordsBuilder = new StringBuilder();
 
-        for (String value : text) {
-            String[] fulltext = value.split(" ");
-            for (String s : fulltext) {
-                wordsBuilder.append(s);
+        for (String paragraph : text) {
+            String[] fulltext = paragraph.split(" ");
+            for (String word : fulltext) {
+                wordsBuilder.append(word);
                 wordsBuilder.append(" ");
             }
         }
         return wordsBuilder.toString();
     }
 
-    private int key(String key){
+    private int key(String key) {
         int total = 0;
-        int [] letters = new int[key.length()];
-        for(int i = 0; i < key.length(); ++i){
-            letters[i] = (int) key.charAt(i);
+        int[] letters = new int[key.length()];
+
+        for (int i = 0; i < key.length(); ++i) {
+            letters[i] = key.charAt(i);
         }
-        for(int n : letters){
+
+        for (int n : letters) {
             total += n;
         }
+
         return total;
     }
 
-    //Tobi tuen die Methode i de switch cases zum teste
-    public void encrypt(){
-        OutputInput key = new OutputInput("What should the key for encryption be?");
+    /**
+     * TODO Javadoc
+     *
+     * @param inputKey
+     */
+    public void encrypt(String inputKey) {
         ArrayList<Integer> total = new ArrayList<>();
-        for(int i = 0; i < paragraphs.size(); ++i){
-            total.addAll(ParagraphtoASCII(i));
+
+        for (int i = 0; i < paragraphs.size(); ++i) {
+            total.addAll(paragraphtoASCII(i));
         }
-        for(int i = 0; i < total.size(); ++i){
-            total.set(i, total.get(i) + key(key.getInput()));
+
+        for (int i = 0; i < total.size(); ++i) {
+            total.set(i, total.get(i) + key(inputKey));
         }
+
         System.out.println(total);
     }
 
-    private ArrayList<Integer> ParagraphtoASCII(int i){
-        ArrayList<Integer>  ascii = new ArrayList<>();
+    private ArrayList<Integer> paragraphtoASCII(int i) {
+        ArrayList<Integer> ascii = new ArrayList<>();
         String[] words;
+
         words = paragraphs.get(i).split(" ");
-        for(int k = 0; k < words.length; ++k){
+
+        for (int k = 0; k < words.length; ++k) {
             words[k] = words[k].concat("/");
         }
-        for(int j = 0; j < words.length; ++j){
-            for(int n = 0; n < words[j].length(); ++n){
-               ascii.add((int) words[j].charAt(n));
+
+        for (String word : words) {
+            for (int n = 0; n < word.length(); ++n) {
+                ascii.add((int) word.charAt(n));
             }
         }
         return ascii;
     }
-    // Die da bitte au ine tue
-    public void decrypt (){
-        OutputInput key = new OutputInput("Please give the key required for decryption");
-        OutputInput text = new OutputInput("Please give the encrypted text with each number separated by a coma.");
-        String[] NumbersasString = new String[text.getInput().length()];
-        NumbersasString = text.getInput().split(",");
+
+
+    public void decrypt(String key, String text) {
+        String[] NumbersasString;
+        StringBuilder words = new StringBuilder();
+
+        NumbersasString = text.split(",");
         int[] numbers = new int[NumbersasString.length];
-        for(int i = 0; i < NumbersasString.length; ++i){
+
+        for (int i = 0; i < NumbersasString.length; ++i) {
             numbers[i] = Integer.parseInt(NumbersasString[i]);
         }
-        for(int i = 0; i < numbers.length; ++i){
-            numbers[i] = numbers[i] - key(key.getInput());
+
+        for (int i = 0; i < numbers.length; ++i) {
+            numbers[i] = numbers[i] - key(key);
         }
+
         char[] chars = new char[numbers.length];
-        for(int i = 0; i < numbers.length; ++i){
+        for (int i = 0; i < numbers.length; ++i) {
             chars[i] = (char) numbers[i];
         }
-       String words = "";
-        for(int i = 0; i < chars.length; ++i){
-            words += chars[i];
+
+        for (char aChar : chars) {
+            words.append(aChar);
         }
-        String[] sentences = words.split("/");
-        System.out.println(sentences);
+
+        String[] sentences = words.toString().split("/");
+        output.print(Arrays.toString(sentences));
     }
 
 }

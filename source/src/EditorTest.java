@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0
  */
 
-public class EditorTest {
+class EditorTest {
     private Editor editor;
     private final String test1 = "The quick brown fox jumps over the lazy dog";
     private final String test2 = "The lazy dog jumps over the quick brown fox";
@@ -24,7 +24,7 @@ public class EditorTest {
     private ArrayList<String> testParagraph = new ArrayList<>();
 
     @BeforeEach
-    public void SetUp() {
+    void SetUp() {
         editor = new Editor();
         testParagraph.add(test1);
         testParagraph.add(test2);
@@ -33,7 +33,7 @@ public class EditorTest {
     }
 
     @AfterEach
-    public void TearDown() {
+    void TearDown() {
         testParagraph.clear(); // Clearing out ArrayList so it can be filled with standard values
     }
 

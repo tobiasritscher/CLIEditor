@@ -21,6 +21,8 @@ public class Logic {
         REPLACE_WORD("4"),
         INDEX_WORDS("5"),
         PRINT_FORMATED_TEXT("6"),
+        ENCRYPT("7"),
+        DECRYPT("8"),
         WRONG_INPUT("ERROR");
 
         private final String chosenOptionCode;
@@ -61,9 +63,9 @@ public class Logic {
     }
 
     private void printOptions() {
-        String[] options = {"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
+        final String[] options = {"\n0: Exit the programm (also prints the final text)", "1: Print paragraphs",
                 "2: Insert paragraph", "3: Delete paragraph", "4: Replace a word in a paragraph",
-                "5: Index of words being used", "6: Print formatted text"};
+                "5: Index of words being used", "6: Print formatted text", "7: Encrypt a text", "8: Decrypt a text"};
         // print all the options
         for (String s : options) {
             output.print(s);
@@ -153,6 +155,17 @@ public class Logic {
             case PRINT_FORMATED_TEXT:
                 OutputInput chooseParagraphLength = new OutputInput("How long should your paragraphs be?: ");
                 editor.printFormattedText(chooseParagraphLength.getInput());
+                break;
+
+            case ENCRYPT:
+                OutputInput encryptKey = new OutputInput("What should the key for encryption be?: ");
+                editor.encrypt(encryptKey.getInput());
+                break;
+
+            case DECRYPT:
+                OutputInput decryptKey = new OutputInput("Please give the key required for decryption");
+                OutputInput text = new OutputInput("Please give the encrypted text with each number separated by a coma.");
+                editor.decrypt(decryptKey.getInput(), text.getInput());
                 break;
 
             default:
