@@ -159,13 +159,13 @@ public class Logic {
 
             case ENCRYPT:
                 OutputInput encryptKey = new OutputInput("What should the key for encryption be?: ");
-                editor.encrypt(encryptKey.getInput());
+                Encryption.encrypt(encryptKey.getInput());
                 break;
 
             case DECRYPT:
                 OutputInput decryptKey = new OutputInput("Please give the key required for decryption");
                 OutputInput text = new OutputInput("Please give the encrypted text with each number separated by a coma.");
-                editor.decrypt(decryptKey.getInput(), text.getInput());
+                Encryption.decrypt(decryptKey.getInput(), text.getInput());
                 break;
 
             default:
