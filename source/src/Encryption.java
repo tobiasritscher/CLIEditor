@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//Handels the en- and decrypting methods
 public class Encryption {
     private Editor editor;
 
@@ -99,6 +100,4 @@ public class Encryption {
 
         return editor.listToString(Arrays.asList(sentences));
     }
-
-
 }
