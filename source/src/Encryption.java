@@ -99,6 +99,4 @@ public class Encryption {
 
         return editor.listToString(Arrays.asList(sentences));
     }
-
-
 }
