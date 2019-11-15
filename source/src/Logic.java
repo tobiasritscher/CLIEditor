@@ -32,9 +32,9 @@ public class Logic {
         }
 
         public static ChosenOption valueOfLabel(String label) {
-            for (ChosenOption e : values()) {
-                if (e.chosenOptionCode.equals(label)) {
-                    return e;
+            for (ChosenOption value : values()) {
+                if (value.chosenOptionCode.equals(label)) {
+                    return value;
                 }
             }
             return WRONG_INPUT;
