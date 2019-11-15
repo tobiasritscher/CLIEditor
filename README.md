@@ -28,6 +28,10 @@ Bearbeitungsmöglichkeiten für ihren Text:
 
 6: Print formated text - Gibt den Text im Terminal zurück. Sie können die Zeilenlänge bestimmen.
 
+7: Encrypt Text - Codiert den Text mit einem speziellen Algorithmus.
+
+8: Decrypt Text - Decodiert den Text zu seinem ursprung.
+
 ## Team
 
 * **Pascal Witzig** - Head of Development of Wordindexing aka Assistant Caffeine Addict
